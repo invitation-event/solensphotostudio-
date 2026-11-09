@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Solens Photo Studio - Where Art Meets the Lens. Premium photography space in Yerevan.">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff"> 
     <title>SOLENS PHOTOSTUDIO</title>
     
-    <!-- Thin, Elegant Google Fonts -->
+    <!-- Montserrat Regular (400) and Light (300) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
         /* --- VARIABLES & RESET --- */
@@ -26,7 +26,7 @@
             --accent-peach: #faedcd;
             --accent-tan: #d4a373;
             
-            --font-heading: 'Cormorant Garamond', serif;
+            --font-heading: 'Montserrat', sans-serif;
             --font-body: 'Montserrat', sans-serif;
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             --header-height: 80px;
@@ -47,7 +47,7 @@
         
         body {
             font-family: var(--font-body);
-            font-weight: 300;
+            font-weight: 300; /* Montserrat Light */
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.7;
@@ -59,27 +59,27 @@
         /* --- TYPOGRAPHY --- */
         h1, h2, h3, h4, .logo, .nav-link, .btn, .lang-btn, .footer-link {
             font-family: var(--font-heading);
-            font-weight: 400;
+            font-weight: 400; /* Montserrat Regular */
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--text);
         }
         
-        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 1rem; }
-        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 1.5rem; text-align: center; font-weight: 300; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 400; }
+        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 1.5rem; text-align: center; font-weight: 400; }
         h3 { font-size: clamp(1.3rem, 4vw, 1.6rem); margin-bottom: 1rem; letter-spacing: 0.12em; font-weight: 400; }
-        h4 { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; font-family: var(--font-body); font-weight: 500; }
+        h4 { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; font-weight: 400; }
         
         p, span, a, label, input, textarea, button, select, option {
             font-family: var(--font-body);
-            font-weight: 300;
+            font-weight: 300; /* Montserrat Light */
             color: var(--text);
         }
 
         .tagline {
-            font-family: var(--font-heading);
+            font-family: var(--font-body);
             font-style: italic;
-            font-weight: 300;
+            font-weight: 300; /* Montserrat Light */
             font-size: clamp(1.1rem, 3.5vw, 1.6rem);
             letter-spacing: 0.08em;
             color: var(--text-muted);
@@ -132,7 +132,7 @@
         }
         .logo {
             font-size: 1.3rem;
-            font-weight: 500;
+            font-weight: 400; /* Montserrat Regular */
             text-decoration: none;
             letter-spacing: 0.3em;
             z-index: 1002;
@@ -152,7 +152,7 @@
             position: relative;
             transition: var(--transition);
             font-family: var(--font-body);
-            font-weight: 400;
+            font-weight: 400; /* Montserrat Regular */
             padding: 0.5rem 0;
         }
         .nav-link::after {
@@ -184,7 +184,7 @@
             color: var(--text-muted);
             transition: var(--transition);
             font-family: var(--font-body);
-            font-weight: 500;
+            font-weight: 400; /* Montserrat Regular */
             letter-spacing: 0.1em;
         }
         .lang-btn:hover { color: var(--text); }
@@ -249,11 +249,9 @@
             letter-spacing: 0.15em;
             transition: var(--transition);
             padding: 0.5rem;
+            font-weight: 400; /* Montserrat Regular */
         }
         .mobile-nav-link:hover, .mobile-nav-link:active { color: var(--accent-tan); }
-        .close-menu {
-            display: none; /* Handled by hamburger animation now */
-        }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -308,6 +306,7 @@
             line-height: 1.9;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+            font-weight: 300; /* Montserrat Light */
         }
 
         /* --- ROOMS SECTION --- */
@@ -345,14 +344,15 @@
             letter-spacing: 0.15em;
             color: var(--accent-tan);
             margin: 1.5rem 0;
-            font-weight: 500;
-            font-family: var(--font-body);
+            font-weight: 400; /* Montserrat Regular */
+            font-family: var(--font-heading);
         }
         .room-desc {
             font-size: 1rem;
             line-height: 1.8;
             color: var(--text-muted);
             margin-bottom: 2.5rem;
+            font-weight: 300; /* Montserrat Light */
         }
 
         /* --- BUTTONS --- */
@@ -365,7 +365,7 @@
             color: var(--text);
             text-decoration: none;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 400; /* Montserrat Regular */
             letter-spacing: 0.2em;
             border: 1px solid var(--text);
             transition: var(--transition);
@@ -405,7 +405,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             margin-bottom: 0.8rem;
-            font-weight: 500;
+            font-weight: 400; /* Montserrat Regular for better label readability */
             color: var(--text);
         }
         .form-group input, .form-group textarea, .form-group select {
@@ -416,7 +416,7 @@
             background: transparent;
             font-family: var(--font-body);
             font-size: 16px; /* CRITICAL: Prevents iOS auto-zoom on focus */
-            font-weight: 300;
+            font-weight: 300; /* Montserrat Light */
             color: var(--text);
             transition: var(--transition);
             outline: none;
@@ -453,7 +453,7 @@
         }
         .footer-logo {
             font-size: 1.5rem;
-            font-weight: 500;
+            font-weight: 400; /* Montserrat Regular */
             margin-bottom: 2.5rem;
             letter-spacing: 0.35em;
         }
@@ -468,7 +468,7 @@
             font-size: 0.8rem;
             text-decoration: none;
             font-family: var(--font-body);
-            font-weight: 400;
+            font-weight: 400; /* Montserrat Regular */
             transition: var(--transition);
             padding: 0.5rem;
             touch-action: manipulation;
@@ -483,7 +483,7 @@
         }
         .contact-info strong {
             color: var(--text);
-            font-weight: 500;
+            font-weight: 400; /* Montserrat Regular */
             letter-spacing: 0.15em;
             font-size: 0.8rem;
         }
@@ -493,6 +493,7 @@
             padding-top: 2.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.06);
             letter-spacing: 0.1em;
+            font-weight: 300; /* Montserrat Light */
         }
 
         /* --- ANIMATIONS --- */
