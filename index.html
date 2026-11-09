@@ -42,7 +42,7 @@
         
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: var(--header-height); /* Prevents header from covering section titles */
+            scroll-padding-top: var(--header-height);
         }
         
         body {
@@ -65,12 +65,12 @@
             color: var(--text);
         }
         
-        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 400; }
-        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 1.5rem; text-align: center; font-weight: 400; }
-        h3 { font-size: clamp(1.3rem, 4vw, 1.6rem); margin-bottom: 1rem; letter-spacing: 0.12em; font-weight: 400; }
-        h4 { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; font-weight: 400; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 1rem; }
+        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 1.5rem; text-align: center; }
+        h3 { font-size: clamp(1.3rem, 4vw, 1.6rem); margin-bottom: 1rem; letter-spacing: 0.12em; }
+        h4 { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; }
         
-        p, span, a, label, input, textarea, button, select, option {
+        p, span, a, label, input, textarea, button, select, option, li {
             font-family: var(--font-body);
             font-weight: 300; /* Montserrat Light */
             color: var(--text);
@@ -95,17 +95,14 @@
         /* --- UTILITIES & LANGUAGE LOGIC --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         
-        /* Clean, robust language switching */
         [lang="hy"] { display: none !important; }
         body.lang-hy [lang="en"] { display: none !important; }
         body.lang-hy [lang="hy"] { display: inline !important; }
         
-        /* Ensure block-level elements display correctly */
         body.lang-hy h1[lang="hy"], body.lang-hy h2[lang="hy"], body.lang-hy h3[lang="hy"], 
         body.lang-hy h4[lang="hy"], body.lang-hy p[lang="hy"], body.lang-hy div[lang="hy"],
         body.lang-hy li[lang="hy"], body.lang-hy option[lang="hy"] { display: block !important; }
         
-        /* Inline exceptions for options to prevent rendering issues */
         body.lang-hy option[lang="hy"] { display: table-cell !important; }
 
         /* --- HEADER & MENU --- */
@@ -143,7 +140,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
         .nav-link {
@@ -211,7 +208,6 @@
             transition: var(--transition); 
             transform-origin: center;
         }
-        /* Hamburger to X animation */
         .hamburger.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .hamburger.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
@@ -262,7 +258,6 @@
             text-align: center;
             position: relative;
             background-color: var(--bg);
-            /* Enhanced overlay for better text readability */
             background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
             background-size: cover;
             background-position: center;
@@ -321,7 +316,6 @@
             gap: 5rem;
             align-items: center;
         }
-        /* Clean column swapping for desktop reverse layout */
         .room-item.reverse .room-img-wrapper { grid-column: 2; }
         .room-item.reverse .room-text { grid-column: 1; }
         
@@ -353,6 +347,35 @@
             color: var(--text-muted);
             margin-bottom: 2.5rem;
             font-weight: 300; /* Montserrat Light */
+        }
+
+        /* --- STUDIO RULES SECTION --- */
+        .rules-list {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+            counter-reset: rule-counter;
+        }
+        .rules-list li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-weight: 300; /* Montserrat Light */
+        }
+        .rules-list li::before {
+            counter-increment: rule-counter;
+            content: counter(rule-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: var(--font-heading);
+            font-weight: 400; /* Montserrat Regular */
+            font-size: 1.1rem;
+            color: var(--accent-tan);
+            letter-spacing: 0.05em;
         }
 
         /* --- BUTTONS --- */
@@ -390,7 +413,7 @@
         /* --- BOOKING FORM --- */
         .booking-section { 
             text-align: center; 
-            background-color: #fafafa; /* Subtle distinction */
+            background-color: #fafafa;
             border-top: 1px solid rgba(0,0,0,0.05); 
         }
         .booking-form {
@@ -405,7 +428,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             margin-bottom: 0.8rem;
-            font-weight: 400; /* Montserrat Regular for better label readability */
+            font-weight: 400; /* Montserrat Regular */
             color: var(--text);
         }
         .form-group input, .form-group textarea, .form-group select {
@@ -415,7 +438,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.15);
             background: transparent;
             font-family: var(--font-body);
-            font-size: 16px; /* CRITICAL: Prevents iOS auto-zoom on focus */
+            font-size: 16px;
             font-weight: 300; /* Montserrat Light */
             color: var(--text);
             transition: var(--transition);
@@ -429,7 +452,6 @@
         }
         .form-group textarea { resize: vertical; min-height: 120px; }
         
-        /* Custom Select Arrow */
         .form-group select {
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231a1a1a%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
             background-repeat: no-repeat;
@@ -437,7 +459,6 @@
             background-size: 0.8rem;
             cursor: pointer;
         }
-        /* Ensure datetime-local looks clean */
         input[type="datetime-local"] {
             color-scheme: light;
             cursor: pointer;
@@ -515,44 +536,29 @@
            ========================================= */
         @media (max-width: 900px) {
             .container { padding: 0 1.5rem; }
-            
-            /* Header adjustments */
             header { padding: 0 1.5rem; }
             .hamburger { display: flex; }
-            .nav-menu { display: none; } /* Hide desktop menu */
-            
-            /* Section spacing reduction */
+            .nav-menu { display: none; }
             section { padding: 4rem 0; }
             
-            /* Stack grids vertically cleanly */
             .about-grid, .room-item { 
                 grid-template-columns: 1fr; 
                 gap: 2.5rem; 
             }
-            
-            /* Reset grid columns on mobile so image is always first (top) */
             .room-item.reverse .room-img-wrapper { grid-column: 1; order: 1; }
             .room-item.reverse .room-text { grid-column: 1; order: 2; }
             .room-item { display: flex; flex-direction: column; }
             .room-item .room-img-wrapper { order: 1; }
             .room-item .room-text { order: 2; }
             
-            /* Image sizing for mobile */
             .about-img { height: 400px; }
             .room-img { aspect-ratio: 3/4; }
-            
-            /* Hero adjustments */
             .hero { background-position: center 20%; }
             .hero-content { padding: 1.5rem; }
-            
-            /* Buttons full width on mobile for easy thumb tapping */
             .btn { width: 100%; }
-            
-            /* Footer spacing */
             .footer-menu { gap: 1.5rem 2rem; flex-direction: column; align-items: center; }
         }
 
-        /* Small phone adjustments */
         @media (max-width: 400px) {
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.6rem; }
@@ -568,24 +574,25 @@
     <header id="header">
         <a href="#home" class="logo">SOLENS</a>
         
-        <!-- Hamburger Button -->
         <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
         
-        <!-- Desktop Menu -->
         <ul class="nav-menu">
             <li><a href="#home" class="nav-link">
                 <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
             </a></li>
-            <li><a href="#booking" class="nav-link">
-                <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span>
-            </a></li>
             <li><a href="#about" class="nav-link">
                 <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
             </a></li>
-            <li><a href="#contact" class="nav-link">
-                <span lang="en">Contact Us</span><span lang="hy">Կապ</span>
+            <li><a href="#rooms" class="nav-link">
+                <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
+            </a></li>
+            <li><a href="#rules" class="nav-link">
+                <span lang="en">Studio Rules</span><span lang="hy">Ստուդիայի Կանոններ</span>
+            </a></li>
+            <li><a href="#booking" class="nav-link">
+                <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
             </a></li>
             <li class="lang-toggle">
                 <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English">EN</button>
@@ -599,14 +606,17 @@
         <a href="#home" class="mobile-nav-link" onclick="toggleMenu()">
             <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
         </a>
-        <a href="#booking" class="mobile-nav-link" onclick="toggleMenu()">
-            <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span>
-        </a>
         <a href="#about" class="mobile-nav-link" onclick="toggleMenu()">
             <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
         </a>
-        <a href="#contact" class="mobile-nav-link" onclick="toggleMenu()">
-            <span lang="en">Contact Us</span><span lang="hy">Կապ</span>
+        <a href="#rooms" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
+        </a>
+        <a href="#rules" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">Studio Rules</span><span lang="hy">Ստուդիայի Կանոններ</span>
+        </a>
+        <a href="#booking" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
         </a>
         <div class="lang-toggle" style="border: none; margin-top: 2rem;">
             <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -626,6 +636,11 @@
                     <span lang="en">Where Art Meets the Lens…</span>
                     <span lang="hy">Որտեղ արվեստը հանդիպում է օբյեկտիվին…</span>
                 </p>
+                <!-- Book Studio Button added directly below tagline -->
+                <a href="#booking" class="btn btn-accent" style="margin-top: 2rem;">
+                    <span lang="en">Book Studio</span>
+                    <span lang="hy">Ամրագրել Ստուդիա</span>
+                </a>
             </div>
         </section>
 
@@ -642,33 +657,13 @@
                             <span lang="hy">Մեր Մասին</span>
                         </h4>
                         <h2>
-                            <span lang="en"></span>
-                            <span lang="hy"></span>
+                            <span lang="en">The Space</span>
+                            <span lang="hy">Տարածքը</span>
                         </h2>
                         <div class="divider" style="margin: 0 0 2rem 0;"></div>
                         <p>
-                            <span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography.
-
-With a total area of 180 square meters, the studio features 4.5-meter-high ceilings, large windows, abundant natural light, and a spacious cyclorama.
-
-The studio offers two unique shooting spaces, MUSA and MINI MUSA, each with its own distinctive atmosphere and design, created to bring different styles and creative concepts to life.
-
-Our studio is ideal for family, children’s, individual, class, group, commercial, and other creative photoshoots.
-
-For the comfort and convenience of our guests, the studio also features a welcoming waiting area and a dressing room.
-
-Solens Photostudio is more than just a photography space — it is an environment where every idea can become reality.</span>
-                            <span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։
-
-180 քմ ընդհանուր մակերեսով ֆոտոստուդիան առանձնանում է 4.5 մետր բարձրությամբ առաստաղներով, մեծ պատուհաններով, բնական լուսավորությամբ և ընդարձակ ցիկլորամայով։
-
-Ստուդիան ունի երկու նկարահանման սրահ՝ MUSA և MINI MUSA, որոնցից յուրաքանչյուրն ունի իր առանձնահատուկ մթնոլորտն ու դիզայնը՝ նախատեսված տարբեր ոճերի և գաղափարների իրականացման համար։
-
-Մեր տարածքում կարող եք իրականացնել ընտանեկան, մանկական, անհատական, դասարանական, խմբային, գովազդային և այլ ստեղծագործական նկարահանումներ։
-
-Հյուրերի հարմարավետության համար ստուդիան ունի նաև սպասասրահ և հանդերձարան։
-
-Solens Photostudio-ն միջավայր է, որտեղ յուրաքանչյուր գաղափար կարող է դառնալ իրականություն։</span>
+                            <span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography. With a total area of 180 square meters, the studio features 4.5-meter-high ceilings, large windows, abundant natural light, and a spacious cyclorama. The studio offers two unique shooting spaces, MUSA and MINI MUSA, each with its own distinctive atmosphere and design, created to bring different styles and creative concepts to life.</span>
+                            <span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ 180 քմ ընդհանուր մակերեսով ֆոտոստուդիան առանձնանում է 4.5 մետր բարձրությամբ առաստաղներով, մեծ պատուհաններով, բնական լուսավորությամբ և ընդարձակ ցիկլորամայով։ Ստուդիան ունի երկու նկարահանման սրահ՝ MUSA և MINI MUSA, որոնցից յուրաքանչյուրն ունի իր առանձնահատուկ մթնոլորտն ու դիզայնը։</span>
                         </p>
                     </div>
                 </div>
@@ -704,20 +699,8 @@ Solens Photostudio-ն միջավայր է, որտեղ յուրաքանչյուր
                                 <span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span>
                             </div>
                             <p class="room-desc">
-                                <span lang="en">The Muse is a symbol of creativity, beauty, and inspiration. This very idea inspired the name MUSA.
-
-A spacious and stylish 120-square-meter space where every idea can turn into art and every frame can tell its own little story.
-
-Featuring a 6-meter-long cyclorama, a variety of colorful backdrops, and uniquely designed shooting areas, MUSA offers the perfect setting for commercial, individual, family, class, and group photoshoots.
-
-MUSA is designed for those who love to express their style, explore their creativity, and bring their vision to life.</span>
-                                <span lang="hy">Մուսան ստեղծագործության, գեղեցկության և ներշնչանքի խորհրդանիշն է։ Հենց այս գաղափարից է ծնվել MUSA անվանումը։
-
-120 քմ ընդարձակ և ոճային տարածք, որտեղ յուրաքանչյուր գաղափար կարող է վերածվել արվեստի, իսկ յուրաքանչյուր կադր՝ փոքրիկ պատմության։
-
-6 մետր երկարությամբ ցիկլորաման, գունային բազմազան ֆոներն ու յուրահատուկ նկարահանման գոտիները հնարավորություն են տալիս իրականացնել գովազդային, անհատական, ընտանեկան, դասարանական և խմբային նկարահանումներ։
-
-MUSA-ն ստեղծված է նրանց համար, ովքեր սիրում են արտահայտել իրենց ոճը։</span>
+                                <span lang="en">The Muse is a symbol of creativity, beauty, and inspiration. A spacious and stylish 120-square-meter space where every idea can turn into art. Featuring a 6-meter-long cyclorama, a variety of colorful backdrops, and uniquely designed shooting areas, MUSA offers the perfect setting for commercial, individual, family, class, and group photoshoots.</span>
+                                <span lang="hy">Մուսան ստեղծագործության, գեղեցկության և ներշնչանքի խորհրդանիշն է։ 120 քմ ընդարձակ և ոճային տարածք, որտեղ յուրաքանչյուր գաղափար կարող է վերածվել արվեստի։ 6 մետր երկարությամբ ցիկլորաման, գունային բազմազան ֆոներն ու յուրահատուկ նկարահանման գոտիները հնարավորություն են տալիս իրականացնել գովազդային, անհատական, ընտանեկան, դասարանական և խմբային նկարահանումներ։</span>
                             </p>
                             <a href="#booking" class="btn btn-accent">
                                 <span lang="en">Book a Studio</span>
@@ -741,20 +724,8 @@ MUSA-ն ստեղծված է նրանց համար, ովքեր սիրում են 
                                 <span lang="hy">1 ԺԱՄ — 10,000 ԴՐԱՄ</span>
                             </div>
                             <p class="room-desc">
-                                <span lang="en">Inspired by the magic of childhood, creativity, and the beauty of little moments, MINI MUSA is a space where the warmest memories come to life.
-
-A cozy and welcoming 60-square-meter space, designed to capture children’s smiles, genuine emotions, and beautiful family moments.
-
-The studio features a small cyclorama, thoughtfully designed photoshoot areas, and a wide selection of props for children, making every photoshoot more fun and creative.
-
-The space is ideal for children’s, newborn, and family photoshoots.</span>
-                                <span lang="hy">Ոգեշնչված մանկական հեքիաթով, ստեղծագործությամբ և փոքրիկ պահերի գեղեցկությամբ՝ MINI MUSA-ն տարածք է, որտեղ ծնվում են ամենաջերմ հիշողությունները։
-
-60 քմ հարմարավետ և ջերմ տարածք՝ ստեղծված երեխաների ժպիտները, անկեղծ հույզերն ու ընտանեկան գեղեցիկ պահերը լուսանկարներում պահպանելու համար։
-
-Սրահն ունի փոքր ցիկլորամա, ձևավորված նկարահանման տարբեր գոտիներ և երեխաների համար նախատեսված բազմազան ռեկվիզիտներ, որոնք յուրաքանչյուր ֆոտոսեսիա դարձնում են ավելի հետաքրքիր ու ստեղծագործական։
-
-Տարածքը հիանալի է մանկական, նորածնային, ընտանեկան  նկարահանումների համար։</span>
+                                <span lang="en">Inspired by the magic of childhood, creativity, and the beauty of little moments, MINI MUSA is a space where the warmest memories come to life. A cozy and welcoming 60-square-meter space, designed to capture children’s smiles, genuine emotions, and beautiful family moments with a small cyclorama and a wide selection of props.</span>
+                                <span lang="hy">Ոգեշնչված մանկական հեքիաթով, ստեղծագործությամբ և փոքրիկ պահերի գեղեցկությամբ՝ MINI MUSA-ն տարածք է, որտեղ ծնվում են ամենաջերմ հիշողությունները։ 60 քմ հարմարավետ և ջերմ տարածք՝ ստեղծված երեխաների ժպիտները, անկեղծ հույզերն ու ընտանեկան գեղեցիկ պահերը լուսանկարներում պահպանելու համար։</span>
                             </p>
                             <a href="#booking" class="btn btn-accent">
                                 <span lang="en">Book a Studio</span>
@@ -763,6 +734,64 @@ The space is ideal for children’s, newborn, and family photoshoots.</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Studio Rules Section -->
+        <section id="rules" style="background-color: #fafafa; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+            <div class="container">
+                <h4 class="fade-in" style="text-align: center;">
+                    <span lang="en">Please Note</span>
+                    <span lang="hy">Խնդրում ենք ուշադրություն դարձնել</span>
+                </h4>
+                <h2 class="fade-in">
+                    <span lang="en">Studio Rules</span>
+                    <span lang="hy">Ստուդիայի Կանոններ</span>
+                </h2>
+                <div class="divider fade-in"></div>
+                
+                <ol class="rules-list fade-in">
+                    <li>
+                        <span lang="en">Please arrive 5 minutes before your scheduled booking to ensure the photoshoot starts on time.</span>
+                        <span lang="hy">Խնդրում ենք ժամանել ձեր ամրագրումից 5 րոպե առաջ՝ ապահովելու համար, որ լուսանկարահանումը սկսվի ժամանակին։</span>
+                    </li>
+                    <li>
+                        <span lang="en">The booking time begins at the scheduled start time, regardless of late arrival.</span>
+                        <span lang="hy">Ամրագրման ժամանակը սկսվում է նշանակված մեկնարկի ժամից՝ անկախ ուշացումից։</span>
+                    </li>
+                    <li>
+                        <span lang="en">Please take care of the studio property, decorations, furniture, and lighting equipment.</span>
+                        <span lang="hy">Խնդրում ենք խնամքով վերաբերվել ստուդիայի գույքին, դեկորացիաներին, կահույքին և լուսավորության սարքավորումներին։</span>
+                    </li>
+                    <li>
+                        <span lang="en">Please return all props and decorations to their original places after use.</span>
+                        <span lang="hy">Օգտագործումից հետո խնդրում ենք բոլոր ռեկվիզիտներն ու դեկորացիաները վերադարձնել իրենց սկզբնական տեղերը։</span>
+                    </li>
+                    <li>
+                        <span lang="en">Please keep the studio clean and tidy at all times.</span>
+                        <span lang="hy">Խնդրում ենք ստուդիան միշտ պահել մաքուր և կարգին։</span>
+                    </li>
+                    <li>
+                        <span lang="en">Extending your booking is possible only if the studio is available, and an additional fee will apply.</span>
+                        <span lang="hy">Ամրագրման երկարաձգումը հնարավոր է միայն ստուդիայի ազատ լինելու դեպքում, և կկիրառվի լրացուցիչ վճար։</span>
+                    </li>
+                    <li>
+                        <span lang="en">If you need to cancel or reschedule your booking, please notify us at least 24 hours in advance. Cancellations made less than 24 hours before the booking will incur a fee of 50% of the booking price.</span>
+                        <span lang="hy">Եթե անհրաժեշտ է չեղարկել կամ վերանշանակել ձեր ամրագրումը, խնդրում ենք տեղեկացնել մեզ առնվազն 24 ժամ առաջ։ Ամրագրումից 24 ժամից պակաս ժամկետում չեղարկումները կենթարկվեն ամրագրման գնի 50%-ի չափով տուգանքի։</span>
+                    </li>
+                    <li>
+                        <span lang="en">Smoking is strictly prohibited inside the studio.</span>
+                        <span lang="hy">Ծխելը ստուդիայի ներսում խստիվ արգելված է։</span>
+                    </li>
+                    <li>
+                        <span lang="en">For children’s safety, please ensure that they are always supervised by an adult.</span>
+                        <span lang="hy">Երեխաների անվտանգության համար խնդրում ենք ապահովել, որ նրանք միշտ գտնվեն չափահասի հսկողության ներքո։</span>
+                    </li>
+                    <li>
+                        <span lang="en">Please finish your photoshoot and leave the studio 5 minutes before the end of your scheduled booking to allow time for collecting your belongings and preparing the space for the next client.</span>
+                        <span lang="hy">Խնդրում ենք ավարտել լուսանկարահանումը և լքել ստուդիան ձեր ամրագրված ժամից 5 րոպե առաջ՝ ձեր իրերը հավաքելու և տարածքը հաջորդ հաճախորդի համար նախապատրաստելու համար։</span>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -845,6 +874,9 @@ The space is ideal for children’s, newborn, and family photoshoots.</span>
                 <a href="#rooms" class="footer-link">
                     <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
                 </a>
+                <a href="#rules" class="footer-link">
+                    <span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span>
+                </a>
                 <a href="#booking" class="footer-link">
                     <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
                 </a>
@@ -860,7 +892,7 @@ The space is ideal for children’s, newborn, and family photoshoots.</span>
                     <span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span>
                 </strong><br>
                 +374 93 320695<br>
-              solensphotostudio@gmail.com</p>
+                solensphotostudio@gmail.com</p>
             </div>
 
             <div class="copyright">
