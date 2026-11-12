@@ -7,28 +7,27 @@
     <meta name="theme-color" content="#ffffff"> 
     <title>SOLENS PHOTOSTUDIO</title>
     
-    <!-- Elegant Serif for "SOLENS" + Clean Sans for "PHOTOSTUDIO" and body -->
+    <!-- Montserrat with very thin weights (200, 300) for the minimalist geometric aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
             --bg: #ffffff;
-            --bg-book: #E9EDC9; /* Requested Book Studio background */
-            --text: #1a1a1a;
+            --bg-book: #E9EDC9;
+            --text: #111111; /* Strictly requested black */
             --text-muted: #4e4c4c;
             
-            /* Updated Brand Palette */
-            --accent: #CCD5AE; /* Requested green replacement */
+            --accent: #CCD5AE;
             --accent-hover: #b5c09a;
             --divider: #e0e0e0;
             
-            --font-elegant: 'Cormorant Garamond', serif;
+            --font-logo: 'Montserrat', sans-serif; /* Geometric, minimalist sans-serif */
             --font-main: 'Montserrat', sans-serif;
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            --header-height: 100px; /* Slightly taller to accommodate stacked logo */
+            --header-height: 110px; /* Adjusted for the two-line logo lockup */
         }
 
         * { 
@@ -63,34 +62,35 @@
             color: var(--text);
         }
         
-        /* --- REFINED LOGO LOCKUP --- */
+        /* --- REFINED LOGO LOCKUP (Strictly Sans-Serif, Thin, Wide Tracking) --- */
         .logo-lockup {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-decoration: none;
             line-height: 1;
-            gap: 4px;
+            gap: 8px; /* Space between SOLENS and PHOTOSTUDIO */
             transition: var(--transition);
         }
         .logo-main {
-            font-family: var(--font-elegant);
-            font-size: 1.9rem;
-            font-weight: 500;
+            font-family: var(--font-logo);
+            font-weight: 200; /* Very thin, elegant, delicate */
+            font-size: 2.2rem; /* Large and visually balanced */
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--text);
+            letter-spacing: 0.35em; /* Generous letter spacing */
+            color: #111111;
         }
         .logo-sub {
-            font-family: var(--font-main);
-            font-size: 0.55rem;
-            font-weight: 400;
+            font-family: var(--font-logo);
+            font-weight: 300; /* Delicate, very thin */
+            font-size: 0.6rem; /* Significantly smaller */
             text-transform: uppercase;
-            letter-spacing: 0.45em;
-            color: var(--text-muted);
+            letter-spacing: 0.6em; /* Extremely wide letter spacing */
+            color: #111111;
         }
-        .logo-lockup:hover .logo-main { color: var(--accent-hover); }
-        .logo-lockup:hover .logo-sub { color: var(--text); }
+        .logo-lockup:hover .logo-main { opacity: 0.7; }
+        .logo-lockup:hover .logo-sub { opacity: 0.7; }
 
         /* Hero Heading Lockup */
         .main-heading {
@@ -101,41 +101,42 @@
             margin-bottom: 2.5rem;
         }
         .heading-solens {
-            font-family: var(--font-elegant);
-            font-size: clamp(3.5rem, 9vw, 6.5rem);
-            font-weight: 400;
+            font-family: var(--font-logo);
+            font-weight: 200; /* Very thin */
+            font-size: clamp(3rem, 8vw, 5.5rem); /* Large, responsive */
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text);
-            line-height: 1;
+            letter-spacing: 0.3em; /* Generous tracking */
+            color: #111111;
+            line-height: 1.1;
         }
         .heading-photostudio {
-            font-family: var(--font-main);
-            font-size: 0.75rem;
-            font-weight: 400;
+            font-family: var(--font-logo);
+            font-weight: 300; /* Delicate */
+            font-size: clamp(0.6rem, 1.5vw, 0.85rem); /* Significantly smaller */
             text-transform: uppercase;
-            letter-spacing: 0.55em;
-            color: var(--text-muted);
+            letter-spacing: 0.65em; /* Extremely wide */
+            color: #111111;
             margin-top: 0.5rem;
         }
 
         h2 { 
-            font-family: var(--font-elegant);
-            font-size: clamp(2rem, 4vw, 3rem); 
-            font-weight: 400;
+            font-family: var(--font-logo);
+            font-size: clamp(1.8rem, 4vw, 2.5rem); 
+            font-weight: 300; 
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.25em; 
             margin-bottom: 1rem; 
             text-align: center; 
-            color: var(--text);
+            color: #111111;
         }
         h3 { 
             font-family: var(--font-main);
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             margin-bottom: 0.5rem; 
-            letter-spacing: 0.2em; 
+            letter-spacing: 0.25em; 
             text-transform: uppercase;
-            color: var(--text);
+            font-weight: 400;
+            color: #111111;
         }
         h4 { 
             font-size: 0.7rem; 
@@ -143,6 +144,7 @@
             color: var(--text-muted); 
             margin-bottom: 1rem; 
             text-align: center;
+            font-weight: 400;
         }
         
         p, span, a, label, input, textarea, button, select, option, li {
@@ -152,11 +154,11 @@
         }
 
         .tagline {
-            font-family: var(--font-elegant);
+            font-family: var(--font-logo);
             font-style: italic;
-            font-weight: 400;
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            letter-spacing: 0.05em;
+            font-weight: 300;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            letter-spacing: 0.1em;
             color: var(--text-muted);
             margin-bottom: 3rem;
         }
@@ -189,7 +191,7 @@
             display: inline; 
         }
 
-        /* --- PAGE ROUTING (Simulates Separate Pages) --- */
+        /* --- PAGE ROUTING --- */
         .page-view {
             display: none;
             opacity: 0;
@@ -329,7 +331,7 @@
         }
         .mobile-nav-link:hover { color: var(--accent-hover); }
 
-        /* --- HERO SECTION (Home Page) --- */
+        /* --- HERO SECTION --- */
         .hero {
             min-height: 100dvh;
             display: flex;
@@ -338,10 +340,10 @@
             text-align: center;
             position: relative;
             background-color: var(--bg);
-            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
             background-size: cover;
             background-position: center;
-            padding-top: 0; /* Override page-view padding for hero */
+            padding-top: 0;
         }
         .hero-content {
             position: relative;
@@ -430,8 +432,8 @@
             position: absolute;
             left: 0;
             top: 0;
-            font-family: var(--font-elegant);
-            font-weight: 400;
+            font-family: var(--font-logo);
+            font-weight: 300;
             font-size: 1.4rem;
             font-style: italic;
             color: var(--accent-hover);
@@ -440,7 +442,7 @@
         /* --- BOOKING PAGE --- */
         .booking-section { 
             text-align: center; 
-            background-color: var(--bg-book) !important; /* Requested color */
+            background-color: var(--bg-book) !important;
             min-height: 100vh;
         }
         .booking-form {
@@ -479,7 +481,7 @@
         }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group select {
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231a1a1a%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
             background-repeat: no-repeat;
             background-position: right 0.2rem center;
             background-size: 0.7rem;
@@ -528,25 +530,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 2.5rem;
             text-decoration: none;
         }
         .footer-logo-main {
-            font-family: var(--font-elegant);
-            font-size: 2.2rem;
-            font-weight: 500;
+            font-family: var(--font-logo);
+            font-weight: 200;
+            font-size: 2.4rem;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
-            color: var(--text);
+            letter-spacing: 0.35em;
+            color: #111111;
         }
         .footer-logo-sub {
-            font-family: var(--font-main);
-            font-size: 0.6rem;
-            font-weight: 400;
+            font-family: var(--font-logo);
+            font-weight: 300;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.5em;
-            color: var(--text-muted);
+            letter-spacing: 0.6em;
+            color: #111111;
         }
         .footer-menu {
             display: flex;
@@ -606,16 +608,19 @@
             .hero { background-position: center 30%; }
             .btn { width: 100%; }
             .footer-menu { gap: 1.5rem 2rem; flex-direction: column; align-items: center; }
+            
+            /* Mobile Logo Adjustments to prevent overflow while keeping elegance */
+            .logo-main { font-size: 1.6rem; letter-spacing: 0.25em; }
+            .logo-sub { font-size: 0.5rem; letter-spacing: 0.45em; }
+            .heading-solens { letter-spacing: 0.15em; }
+            .heading-photostudio { letter-spacing: 0.4em; }
         }
 
         @media (max-width: 400px) {
-            .heading-solens { font-size: 2.8rem; letter-spacing: 0.15em; }
-            .heading-photostudio { font-size: 0.6rem; letter-spacing: 0.35em; }
+            .heading-solens { font-size: 2.2rem; }
             .container { padding: 0 1.2rem; }
             .mobile-nav-link { font-size: 1.1rem; }
             .about-img { height: 300px; }
-            .logo-main { font-size: 1.5rem; }
-            .logo-sub { font-size: 0.5rem; letter-spacing: 0.35em; }
         }
     </style>
 </head>
@@ -978,36 +983,26 @@
 
     <!-- JavaScript -->
     <script>
-        // 1. Page Routing (Simulates opening separate dedicated pages)
         function navigateTo(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page-view').forEach(page => {
                 page.classList.remove('active');
             });
-            
-            // Show target page
             const targetPage = document.getElementById('view-' + pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
-                // Scroll to top to mimic a fresh page load
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
-            
-            // Update URL hash for browser history without jumping
             history.pushState(null, null, '#' + pageId);
         }
 
-        // Handle browser back/forward buttons
         window.addEventListener('popstate', () => {
             const hash = window.location.hash.replace('#', '') || 'home';
             navigateTo(hash);
         });
 
-        // Initialize based on URL hash
         const initialPage = window.location.hash.replace('#', '') || 'home';
         navigateTo(initialPage);
 
-        // 2. Language Switcher Logic with LocalStorage
         function setLang(lang) {
             document.body.className = `lang-${lang}`;
             document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1019,19 +1014,14 @@
             localStorage.setItem('solensPreferredLang', lang);
         }
 
-        // Load preferred language on page load
         const savedLang = localStorage.getItem('solensPreferredLang') || 'en';
         setLang(savedLang);
 
-        // 3. Mobile Menu Toggle with Animation
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const hamburger = document.getElementById('hamburgerBtn');
-            
             menu.classList.toggle('active');
             hamburger.classList.toggle('active');
-            
-            // Prevent background scrolling when menu is open
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
         }
     </script>
