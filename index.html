@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Solens Photo Studio - Where Art Meets the Lens. Premium photography space in Yerevan.">
-    <meta name="theme-color" content="#ffffff"> 
+    <meta name="theme-color" content="#E9EDC9"> 
     <title>SOLENS PHOTOSTUDIO</title>
     
-    <!-- Montserrat with very thin weights (400, 500) for the minimalist geometric aesthetic -->
+    <!-- Montserrat with very thin weights for the minimalist geometric aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
@@ -16,18 +16,19 @@
         /* --- VARIABLES & RESET --- */
         :root {
             --bg: #ffffff;
-            --bg-book: #E9EDC9;
+            --bg-cream: #E9EDC9; /* Warm cream color for header, footer, and accents */
+            --bg-book: #ffffff; /* Pure white for booking section */
             --text: #111111; /* Strictly requested black */
-            --text-muted: ccd5ae;
+            --text-muted: #4e4c4c; /* Fixed missing # from previous code */
             
             --accent: #CCD5AE;
             --accent-hover: #b5c09a;
-            --divider: #e0e0e0;
+            --divider: #d1d6bc;
             
-            --font-logo: 'Montserrat', sans-serif; /* Geometric, minimalist sans-serif */
+            --font-logo: 'Montserrat', sans-serif;
             --font-main: 'Montserrat', sans-serif;
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            --header-height: 110px; /* Adjusted for the two-line logo lockup */
+            --header-height: 110px;
         }
 
         * { 
@@ -62,7 +63,7 @@
             color: var(--text);
         }
         
-        /* --- REFINED LOGO LOCKUP (Strictly Sans-Serif, Thin, Wide Tracking) --- */
+        /* --- REFINED LOGO LOCKUP --- */
         .logo-lockup {
             display: flex;
             flex-direction: column;
@@ -70,23 +71,23 @@
             justify-content: center;
             text-decoration: none;
             line-height: 1;
-            gap: 8px; /* Space between SOLENS and PHOTOSTUDIO */
+            gap: 8px;
             transition: var(--transition);
         }
         .logo-main {
             font-family: var(--font-logo);
-            font-weight: 200; /* Very thin, elegant, delicate */
-            font-size: 2.2rem; /* Large and visually balanced */
+            font-weight: 200;
+            font-size: 2.2rem;
             text-transform: uppercase;
-            letter-spacing: 0.35em; /* Generous letter spacing */
+            letter-spacing: 0.35em;
             color: #111111;
         }
         .logo-sub {
             font-family: var(--font-logo);
-            font-weight: 300; /* Delicate, very thin */
-            font-size: 0.6rem; /* Significantly smaller */
+            font-weight: 300;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 0.6em; /* Extremely wide letter spacing */
+            letter-spacing: 0.6em;
             color: #111111;
         }
         .logo-lockup:hover .logo-main { opacity: 0.7; }
@@ -102,19 +103,19 @@
         }
         .heading-solens {
             font-family: var(--font-logo);
-            font-weight: 500; /* Very thin */
-            font-size: clamp(3rem, 8vw, 5.5rem); /* Large, responsive */
+            font-weight: 200;
+            font-size: clamp(3rem, 8vw, 5.5rem);
             text-transform: uppercase;
-            letter-spacing: 0.3em; /* Generous tracking */
+            letter-spacing: 0.3em;
             color: #111111;
             line-height: 1.1;
         }
         .heading-photostudio {
             font-family: var(--font-logo);
-            font-weight: 300; /* Delicate */
-            font-size: clamp(0.6rem, 1.5vw, 0.85rem); /* Significantly smaller */
+            font-weight: 300;
+            font-size: clamp(0.6rem, 1.5vw, 0.85rem);
             text-transform: uppercase;
-            letter-spacing: 0.65em; /* Extremely wide */
+            letter-spacing: 0.65em;
             color: #111111;
             margin-top: 0.5rem;
         }
@@ -220,10 +221,10 @@
             justify-content: space-between;
             align-items: center;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(233, 237, 201, 0.95); /* Warm cream #E9EDC9 with blur */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .nav-menu {
@@ -246,7 +247,7 @@
             left: 0;
             width: 0;
             height: 1px;
-            background-color: var(--accent);
+            background-color: var(--text);
             transition: var(--transition);
         }
         .nav-link:hover::after { width: 100%; }
@@ -272,7 +273,7 @@
         .lang-btn:hover { color: var(--text); }
         .lang-btn.active {
             color: var(--text);
-            border-bottom: 1px solid var(--accent);
+            border-bottom: 1px solid var(--text);
         }
 
         .hamburger { 
@@ -304,7 +305,7 @@
             left: 0;
             width: 100%;
             height: 100dvh;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(233, 237, 201, 0.98); /* Warm cream overlay */
             backdrop-filter: blur(20px);
             z-index: 1001;
             display: flex;
@@ -351,18 +352,25 @@
             padding: 2rem;
         }
 
-        /* --- ABOUT PAGE --- */
+        /* --- SECTIONS GENERAL --- */
+        section.content-section {
+            padding: 6rem 0;
+        }
+        section.content-section.alt-bg {
+            background-color: #fafafa;
+        }
+
+        /* --- ABOUT US --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: center;
-            padding: 4rem 0;
         }
         .about-img-wrapper { overflow: hidden; }
         .about-img {
             width: 100%;
-            height: 600px;
+            height: 550px;
             object-fit: cover;
             transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -373,12 +381,11 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- STUDIOS PAGE --- */
+        /* --- OUR SPACES --- */
         .rooms-container {
             display: flex;
             flex-direction: column;
             gap: 6rem;
-            padding: 4rem 0;
         }
         .room-item {
             display: grid;
@@ -442,7 +449,7 @@
         /* --- BOOKING PAGE --- */
         .booking-section { 
             text-align: center; 
-            background-color: var(--bg-book) !important;
+            background-color: var(--bg-book) !important; /* Pure white #FFFFFF */
             min-height: 100vh;
         }
         .booking-form {
@@ -520,7 +527,7 @@
 
         /* --- FOOTER --- */
         footer {
-            background-color: fefae0;
+            background-color: var(--bg-cream); /* Warm cream #E9EDC9 */
             color: var(--text-muted);
             padding: 5rem 0 3rem;
             text-align: center;
@@ -609,7 +616,6 @@
             .btn { width: 100%; }
             .footer-menu { gap: 1.5rem 2rem; flex-direction: column; align-items: center; }
             
-            /* Mobile Logo Adjustments to prevent overflow while keeping elegance */
             .logo-main { font-size: 1.6rem; letter-spacing: 0.25em; }
             .logo-sub { font-size: 0.5rem; letter-spacing: 0.45em; }
             .heading-solens { letter-spacing: 0.15em; }
@@ -684,8 +690,9 @@
     </div>
 
     <main>
-        <!-- HOME PAGE -->
+        <!-- HOME PAGE (Now includes Hero, About Us, and Our Spaces) -->
         <div id="view-home" class="page-view active">
+            <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
                     <h1 class="main-heading">
@@ -708,15 +715,13 @@
                     </a>
                 </div>
             </section>
-        </div>
 
-        <!-- ABOUT PAGE -->
-        <div id="view-about" class="page-view">
-            <section>
+            <!-- About Us Section (Added to Homepage) -->
+            <section class="content-section">
                 <div class="container">
                     <h4>
-                        <span lang="en"></span>
-                        <span lang="hy"></span>
+                        <span lang="en">Who We Are</span>
+                        <span lang="hy">Ով ենք մենք</span>
                     </h4>
                     <h2>
                         <span lang="en">About Us</span>
@@ -730,30 +735,24 @@
                         </div>
                         <div class="about-text">
                             <h3 style="text-align: left; margin-bottom: 1.5rem;">
-                                <span lang="en">The Space</span>
-                                <span lang="hy">Տարածքը</span>
+                                <span lang="en">Our Story & Vision</span>
+                                <span lang="hy">Մեր Պատմությունն ու Տեսլականը</span>
                             </h3>
                             <p>
                                 <span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography. With a total area of 180 square meters, the studio features 4.5-meter-high ceilings, large windows, abundant natural light, and a spacious cyclorama.</span>
                                 <span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ 180 քմ ընդհանուր մակերեսով ֆոտոստուդիան առանձնանում է 4.5 մետր բարձրությամբ առաստաղներով, մեծ պատուհաններով, բնական լուսավորությամբ և ընդարձակ ցիկլորամայով։</span>
                             </p>
                             <p>
-                                <span lang="en">The studio offers two unique shooting spaces, MUSA and MINI MUSA, each with its own distinctive atmosphere and design, created to bring different styles and creative concepts to life.</span>
-                                <span lang="hy">Ստուդիան ունի երկու նկարահանման սրահ՝ MUSA և MINI MUSA, որոնցից յուրաքանչյուրն ունի իր առանձնահատուկ մթնոլորտն ու դիզայնը։</span>
+                                <span lang="en">What makes us special is our dedication to providing a luxurious, comfortable, and fully equipped space where every creative concept can come to life, supported by a team that understands the art of visual storytelling.</span>
+                                <span lang="hy">Մեզ առանձնահատուկ է դարձնում մեր նվիրվածությունը՝ ապահովելու շքեղ, հարմարավետ և լիովին հագեցած տարածք, որտեղ յուրաքանչյուր ստեղծագործական գաղափար կարող է կյանքի կոչվել՝ տեսողական պատմվածքի արվեստը հասկացող թիմի աջակցությամբ։</span>
                             </p>
-                            <a href="#" onclick="navigateTo('studios'); return false;" class="btn" style="margin-top: 1rem;">
-                                <span lang="en">Explore Studios</span>
-                                <span lang="hy">Դիտել Ստուդիաները</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- STUDIOS PAGE -->
-        <div id="view-studios" class="page-view">
-            <section>
+            <!-- Our Spaces Section (Added to Homepage) -->
+            <section class="content-section alt-bg">
                 <div class="container">
                     <h4>
                         <span lang="en">Our Spaces</span>
@@ -814,61 +813,80 @@
             </section>
         </div>
 
+        <!-- ABOUT PAGE (Kept for navigation consistency, contains extended info if needed) -->
+        <div id="view-about" class="page-view">
+            <section class="content-section">
+                <div class="container">
+                    <h4><span lang="en">Who We Are</span><span lang="hy">Ով ենք մենք</span></h4>
+                    <h2><span lang="en">About Us</span><span lang="hy">Մեր Մասին</span></h2>
+                    <div class="divider"></div>
+                    <div class="about-grid">
+                        <div class="about-img-wrapper">
+                            <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/c663464f90e4e9dcc05e97569d5a2edc.jpg?v=1790422831" alt="Solens Studio Interior" class="about-img" loading="lazy" decoding="async">
+                        </div>
+                        <div class="about-text">
+                            <h3 style="text-align: left; margin-bottom: 1.5rem;"><span lang="en">Our Story & Vision</span><span lang="hy">Մեր Պատմությունն ու Տեսլականը</span></h3>
+                            <p><span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography. With a total area of 180 square meters, the studio features 4.5-meter-high ceilings, large windows, abundant natural light, and a spacious cyclorama.</span><span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ 180 քմ ընդհանուր մակերեսով ֆոտոստուդիան առանձնանում է 4.5 մետր բարձրությամբ առաստաղներով, մեծ պատուհաններով, բնական լուսավորությամբ և ընդարձակ ցիկլորամայով։</span></p>
+                            <p><span lang="en">What makes us special is our dedication to providing a luxurious, comfortable, and fully equipped space where every creative concept can come to life.</span><span lang="hy">Մեզ առանձնահատուկ է դարձնում մեր նվիրվածությունը՝ ապահովելու շքեղ, հարմարավետ և լիովին հագեցած տարածք, որտեղ յուրաքանչյուր ստեղծագործական գաղափար կարող է կյանքի կոչվել։</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- STUDIOS PAGE (Kept for navigation consistency) -->
+        <div id="view-studios" class="page-view">
+            <section class="content-section">
+                <div class="container">
+                    <h4><span lang="en">Our Spaces</span><span lang="hy">Մեր Տարածքները</span></h4>
+                    <h2><span lang="en">The Studios</span><span lang="hy">Ստուդիաները</span></h2>
+                    <div class="divider"></div>
+                    <div class="rooms-container">
+                        <div class="room-item">
+                            <div class="room-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Musa Studio" class="room-img" loading="lazy" decoding="async">
+                            </div>
+                            <div class="room-text">
+                                <h3>MUSA</h3>
+                                <div class="room-price"><span lang="en">1 HOUR — 12,000 AMD</span><span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span></div>
+                                <p class="room-desc"><span lang="en">The Muse is a symbol of creativity, beauty, and inspiration. A spacious and stylish 120-square-meter space where every idea can turn into art. Featuring a 6-meter-long cyclorama, a variety of colorful backdrops, and uniquely designed shooting areas, MUSA offers the perfect setting for commercial, individual, family, class, and group photoshoots.</span><span lang="hy">Մուսան ստեղծագործության, գեղեցկության և ներշնչանքի խորհրդանիշն է։ 120 քմ ընդարձակ և ոճային տարածք, որտեղ յուրաքանչյուր գաղափար կարող է վերածվել արվեստի։ 6 մետր երկարությամբ ցիկլորաման, գունային բազմազան ֆոներն ու յուրահատուկ նկարահանման գոտիները հնարավորություն են տալիս իրականացնել գովազդային, անհատական, ընտանեկան, դասարանական և խմբային նկարահանումներ։</span></p>
+                                <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent"><span lang="en">Book MUSA</span><span lang="hy">Ամրագրել MUSA</span></a>
+                            </div>
+                        </div>
+                        <div class="room-item reverse">
+                            <div class="room-img-wrapper">
+                                <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/kids.jpg?v=1790424277" alt="Mini Musa Studio" class="room-img" loading="lazy" decoding="async">
+                            </div>
+                            <div class="room-text">
+                                <h3>MINI MUSA</h3>
+                                <div class="room-price"><span lang="en">1 HOUR — 10,000 AMD</span><span lang="hy">1 ԺԱՄ — 10,000 ԴՐԱՄ</span></div>
+                                <p class="room-desc"><span lang="en">Inspired by the magic of childhood, creativity, and the beauty of little moments, MINI MUSA is a space where the warmest memories come to life. A cozy and welcoming 60-square-meter space, designed to capture children’s smiles, genuine emotions, and beautiful family moments with a small cyclorama and a wide selection of props.</span><span lang="hy">Ոգեշնչված մանկական հեքիաթով, ստեղծագործությամբ և փոքրիկ պահերի գեղեցկությամբ՝ MINI MUSA-ն տարածք է, որտեղ ծնվում են ամենաջերմ հիշողությունները։ 60 քմ հարմարավետ և ջերմ տարածք՝ ստեղծված երեխաների ժպիտները, անկեղծ հույզերն ու ընտանեկան գեղեցիկ պահերը լուսանկարներում պահպանելու համար։</span></p>
+                                <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent"><span lang="en">Book MINI MUSA</span><span lang="hy">Ամրագրել MINI MUSA</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <!-- RULES PAGE -->
         <div id="view-rules" class="page-view">
-            <section>
+            <section class="content-section">
                 <div class="container">
-                    <h4>
-                        <span lang="en">Please Note</span>
-                        <span lang="hy">Խնդրում ենք ուշադրություն դարձնել</span>
-                    </h4>
-                    <h2>
-                        <span lang="en">Studio Rules</span>
-                        <span lang="hy">Ստուդիայի Կանոններ</span>
-                    </h2>
+                    <h4><span lang="en">Please Note</span><span lang="hy">Խնդրում ենք ուշադրություն դարձնել</span></h4>
+                    <h2><span lang="en">Studio Rules</span><span lang="hy">Ստուդիայի Կանոններ</span></h2>
                     <div class="divider"></div>
-                    
                     <ol class="rules-list">
-                        <li>
-                            <span lang="en">Please arrive 5 minutes before your scheduled booking to ensure the photoshoot starts on time.</span>
-                            <span lang="hy">Խնդրում ենք ներկայանալ ամրագրված ժամից 5 րոպե շուտ՝ նկարահանումը ժամանակին սկսելու համար։</span>
-                        </li>
-                        <li>
-                            <span lang="en">The booking time begins at the scheduled start time, regardless of late arrival.</span>
-                            <span lang="hy">Նկարահանման ժամանակը հաշվարկվում է ամրագրված ժամից՝ անկախ ուշացումից։</span>
-                        </li>
-                        <li>
-                            <span lang="en">Please take care of the studio property, decorations, furniture, and lighting equipment.</span>
-                            <span lang="hy">Խնդրում ենք պահպանել ստուդիայի գույքը, դեկորները, կահույքն ու լուսավորման սարքավորումները։</span>
-                        </li>
-                        <li>
-                            <span lang="en">Please return all props and decorations to their original places after use.</span>
-                            <span lang="hy">Ռեկվիզիտներն ու դեկորները խնդրում ենք օգտագործելուց հետո վերադարձնել իրենց սկզբնական տեղերը։</span>
-                        </li>
-                        <li>
-                            <span lang="en">Please keep the studio clean and tidy at all times.</span>
-                            <span lang="hy">Ստուդիայի տարածքում խնդրում ենք պահպանել մաքրությունն ու կարգուկանոնը։</span>
-                        </li>
-                        <li>
-                            <span lang="en">Extending your booking is possible only if the studio is available, and an additional fee will apply.</span>
-                            <span lang="hy">Ամրագրված ժամի երկարաձգումը հնարավոր է միայն ազատ ժամերի առկայության դեպքում՝ լրացուցիչ վճարով։</span>
-                        </li>
-                        <li>
-                            <span lang="en">If you need to cancel or reschedule your booking, please notify us at least 24 hours in advance. Cancellations made less than 24 hours before the booking will incur a fee of 50% of the booking price.</span>
-                            <span lang="hy">Ամրագրումը չեղարկելու կամ տեղափոխելու դեպքում խնդրում ենք տեղեկացնել առնվազն 24 ժամ առաջ։ 24 ժամից պակաս ժամանակահատվածում չեղարկելու դեպքում գանձվում է ամրագրման արժեքի 50%-ը։</span>
-                        </li>
-                        <li>
-                            <span lang="en">Smoking is strictly prohibited inside the studio.</span>
-                            <span lang="hy">Ստուդիայի տարածքում ծխելն արգելվում է։</span>
-                        </li>
-                        <li>
-                            <span lang="en">For children’s safety, please ensure that they are always supervised by an adult.</span>
-                            <span lang="hy">Երեխաների անվտանգության համար խնդրում ենք նրանց չթողնել առանց մեծահասակի հսկողության։</span>
-                        </li>
-                        <li>
-                            <span lang="en">Please finish your photoshoot and leave the studio 5 minutes before the end of your scheduled booking to allow time for collecting your belongings and preparing the space for the next client.</span>
-                            <span lang="hy">Խնդրում ենք ստուդիայից դուրս գալ ամրագրված ժամից 5 րոպե շուտ՝ հաշվի առնելով նաև իրերի հավաքման և տարածքը կարգի բերելու ժամանակը։</span>
-                        </li>
+                        <li><span lang="en">Please arrive 5 minutes before your scheduled booking to ensure the photoshoot starts on time.</span><span lang="hy">Խնդրում ենք ներկայանալ ամրագրված ժամից 5 րոպե շուտ՝ նկարահանումը ժամանակին սկսելու համար։</span></li>
+                        <li><span lang="en">The booking time begins at the scheduled start time, regardless of late arrival.</span><span lang="hy">Նկարահանման ժամանակը հաշվարկվում է ամրագրված ժամից՝ անկախ ուշացումից։</span></li>
+                        <li><span lang="en">Please take care of the studio property, decorations, furniture, and lighting equipment.</span><span lang="hy">Խնդրում ենք պահպանել ստուդիայի գույքը, դեկորները, կահույքն ու լուսավորման սարքավորումները։</span></li>
+                        <li><span lang="en">Please return all props and decorations to their original places after use.</span><span lang="hy">Ռեկվիզիտներն ու դեկորները խնդրում ենք օգտագործելուց հետո վերադարձնել իրենց սկզբնական տեղերը։</span></li>
+                        <li><span lang="en">Please keep the studio clean and tidy at all times.</span><span lang="hy">Ստուդիայի տարածքում խնդրում ենք պահպանել մաքրությունն ու կարգուկանոնը։</span></li>
+                        <li><span lang="en">Extending your booking is possible only if the studio is available, and an additional fee will apply.</span><span lang="hy">Ամրագրված ժամի երկարաձգումը հնարավոր է միայն ազատ ժամերի առկայության դեպքում՝ լրացուցիչ վճարով։</span></li>
+                        <li><span lang="en">If you need to cancel or reschedule your booking, please notify us at least 24 hours in advance. Cancellations made less than 24 hours before the booking will incur a fee of 50% of the booking price.</span><span lang="hy">Ամրագրումը չեղարկելու կամ տեղափոխելու դեպքում խնդրում ենք տեղեկացնել առնվազն 24 ժամ առաջ։ 24 ժամից պակաս ժամանակահատվածում չեղարկելու դեպքում գանձվում է ամրագրման արժեքի 50%-ը։</span></li>
+                        <li><span lang="en">Smoking is strictly prohibited inside the studio.</span><span lang="hy">Ստուդիայի տարածքում ծխելն արգելվում է։</span></li>
+                        <li><span lang="en">For children’s safety, please ensure that they are always supervised by an adult.</span><span lang="hy">Երեխաների անվտանգության համար խնդրում ենք նրանց չթողնել առանց մեծահասակի հսկողության։</span></li>
+                        <li><span lang="en">Please finish your photoshoot and leave the studio 5 minutes before the end of your scheduled booking to allow time for collecting your belongings and preparing the space for the next client.</span><span lang="hy">Խնդրում ենք ստուդիայից դուրս գալ ամրագրված ժամից 5 րոպե շուտ՝ հաշվի առնելով նաև իրերի հավաքման և տարածքը կարգի բերելու ժամանակը։</span></li>
                     </ol>
                 </div>
             </section>
@@ -876,52 +894,31 @@
 
         <!-- BOOKING PAGE -->
         <div id="view-booking" class="page-view booking-section">
-            <section>
+            <section class="content-section">
                 <div class="container">
-                    <h4>
-                        <span lang="en">Reservations</span>
-                        <span lang="hy">Ամրագրումներ</span>
-                    </h4>
-                    <h2>
-                        <span lang="en">Book a Studio</span>
-                        <span lang="hy">Ամրագրել Ստուդիա</span>
-                    </h2>
+                    <h4><span lang="en">Reservations</span><span lang="hy">Ամրագրումներ</span></h4>
+                    <h2><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span></h2>
                     <div class="divider"></div>
                     
                     <form class="booking-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon. / Շնորհակալություն: Մենք շուտով կկապվենք Ձեզ հետ:'); this.reset();">
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Full Name</span>
-                                <span lang="hy">Անուն Ազգանուն</span>
-                            </label>
+                            <label><span lang="en">Full Name</span><span lang="hy">Անուն Ազգանուն</span></label>
                             <input type="text" required autocomplete="name" placeholder=" ">
                         </div>
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Phone Number</span>
-                                <span lang="hy">Հեռախոսահամար</span>
-                            </label>
+                            <label><span lang="en">Phone Number</span><span lang="hy">Հեռախոսահամար</span></label>
                             <input type="tel" required autocomplete="tel" placeholder="+374 ">
                         </div>
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Preferred Room</span>
-                                <span lang="hy">Ցանկալի Սրահ</span>
-                            </label>
+                            <label><span lang="en">Preferred Room</span><span lang="hy">Ցանկալի Սրահ</span></label>
                             <select required>
-                                <option value="" disabled selected>
-                                    <span lang="en">Select a room...</span>
-                                    <span lang="hy">Ընտրեք սրահ...</span>
-                                </option>
+                                <option value="" disabled selected><span lang="en">Select a room...</span><span lang="hy">Ընտրեք սրահ...</span></option>
                                 <option value="musa">MUSA</option>
                                 <option value="mini-musa">MINI MUSA</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Preferred Date & Time</span>
-                                <span lang="hy">Ցանկալի Ամսաթիվ և Ժամ</span>
-                            </label>
+                            <label><span lang="en">Preferred Date & Time</span><span lang="hy">Ցանկալի Ամսաթիվ և Ժամ</span></label>
                             <input type="datetime-local" required>
                         </div>
                         <button type="submit" class="btn btn-accent" style="margin-top: 1rem; width: 100%;">
@@ -961,14 +958,10 @@
             </div>
 
             <div class="contact-info">
-                <p><strong>
-                    <span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span>
-                </strong>
+                <p><strong><span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span></strong>
                 <span lang="en">Arshakunyats 254, Yerevan</span><span lang="hy">Արշակունյաց 254, Երևան</span></p>
                 
-                <p style="margin-top: 1.5rem;"><strong>
-                    <span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span>
-                </strong>
+                <p style="margin-top: 1.5rem;"><strong><span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span></strong>
                 +374 93 320695<br>
                 solensphotostudio@gmail.com</p>
             </div>
