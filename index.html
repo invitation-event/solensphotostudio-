@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Solens Photo Studio - Where Art Meets the Lens. Premium photography space in Yerevan.">
-    <meta name="theme-color" content="fefae0"> 
+    <meta name="theme-color" content="#ffffff"> 
     <title>SOLENS PHOTOSTUDIO</title>
     
-    <!-- 'Montserrat', sans-serif for "Solens" + Clean Sans for "Photostudio" and body -->
+    <!-- Elegant Serif for "SOLENS" + Clean Sans for "PHOTOSTUDIO" and body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
-            --bg: fefae0;
+            --bg: #ffffff;
             --bg-book: #E9EDC9; /* Requested Book Studio background */
             --text: #1a1a1a;
-            --text-muted: ccd5ae;
+            --text-muted: #4e4c4c;
             
             /* Updated Brand Palette */
             --accent: #CCD5AE; /* Requested green replacement */
             --accent-hover: #b5c09a;
             --divider: #e0e0e0;
             
-            --font-elegant: 'Montserrat', sans-serif;
+            --font-elegant: 'Cormorant Garamond', serif;
             --font-main: 'Montserrat', sans-serif;
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            --header-height: 90px;
+            --header-height: 100px; /* Slightly taller to accommodate stacked logo */
         }
 
         * { 
@@ -55,7 +55,7 @@
         }
 
         /* --- TYPOGRAPHY --- */
-        .logo, .nav-link, .btn, .lang-btn, .footer-link, h4 {
+        .nav-link, .btn, .lang-btn, .footer-link, h4 {
             font-family: var(--font-main);
             font-weight: 400;
             text-transform: uppercase;
@@ -63,36 +63,68 @@
             color: var(--text);
         }
         
-        /* Refined Main Heading */
+        /* --- REFINED LOGO LOCKUP --- */
+        .logo-lockup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            line-height: 1;
+            gap: 4px;
+            transition: var(--transition);
+        }
+        .logo-main {
+            font-family: var(--font-elegant);
+            font-size: 1.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--text);
+        }
+        .logo-sub {
+            font-family: var(--font-main);
+            font-size: 0.55rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.45em;
+            color: var(--text-muted);
+        }
+        .logo-lockup:hover .logo-main { color: var(--accent-hover); }
+        .logo-lockup:hover .logo-sub { color: var(--text); }
+
+        /* Hero Heading Lockup */
         .main-heading {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 2rem;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
         }
         .heading-solens {
             font-family: var(--font-elegant);
-            font-size: clamp(3rem, 7vw, 5rem);
-            font-weight: 300;
-            letter-spacing: 0.05em;
+            font-size: clamp(3.5rem, 9vw, 6.5rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
             color: var(--text);
             line-height: 1;
-            font-style: italic;
         }
         .heading-photostudio {
             font-family: var(--font-main);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 400;
-            letter-spacing: 0.45em;
-            color: var(--text-muted);
             text-transform: uppercase;
+            letter-spacing: 0.55em;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
         }
 
         h2 { 
             font-family: var(--font-elegant);
             font-size: clamp(2rem, 4vw, 3rem); 
             font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 1rem; 
             text-align: center; 
             color: var(--text);
@@ -101,13 +133,13 @@
             font-family: var(--font-main);
             font-size: 1.1rem; 
             margin-bottom: 0.5rem; 
-            letter-spacing: 0.15em; 
-            color: var(--text);
+            letter-spacing: 0.2em; 
             text-transform: uppercase;
+            color: var(--text);
         }
         h4 { 
             font-size: 0.7rem; 
-            letter-spacing: 0.3em; 
+            letter-spacing: 0.35em; 
             color: var(--text-muted); 
             margin-bottom: 1rem; 
             text-align: center;
@@ -123,7 +155,7 @@
             font-family: var(--font-elegant);
             font-style: italic;
             font-weight: 400;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             letter-spacing: 0.05em;
             color: var(--text-muted);
             margin-bottom: 3rem;
@@ -134,9 +166,6 @@
             height: 1px;
             background-color: var(--accent);
             margin: 0 auto 3rem;
-        }
-        .divider-left {
-            margin: 0 0 2rem 0;
         }
 
         /* --- UTILITIES & LANGUAGE LOGIC --- */
@@ -156,7 +185,7 @@
             display: block; 
         }
         body.lang-hy .heading-photostudio[lang="hy"], 
-        body.lang-hy .tagline[lang="hy"] span { 
+        body.lang-hy .tagline[lang="hy"] { 
             display: inline; 
         }
 
@@ -194,18 +223,6 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
         }
-        .logo {
-            font-family: var(--font-elegant);
-            font-size: 1.6rem;
-            font-weight: 400;
-            font-style: italic;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            z-index: 1002;
-            transition: var(--transition);
-            color: var(--text);
-        }
-        .logo:hover { color: var(--accent-hover); }
         
         .nav-menu {
             display: flex;
@@ -488,7 +505,7 @@
         }
         .btn:hover {
             background: var(--text);
-            color: fefae0;
+            color: #ffffff;
         }
         .btn-accent {
             border-color: var(--text);
@@ -507,14 +524,29 @@
             text-align: center;
             border-top: 1px solid var(--divider);
         }
-        .footer-logo {
-            font-family: var(--font-elegant);
-            font-size: 1.8rem;
-            font-weight: 400;
-            font-style: italic;
+        .footer-logo-lockup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
             margin-bottom: 2.5rem;
-            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+        .footer-logo-main {
+            font-family: var(--font-elegant);
+            font-size: 2.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
             color: var(--text);
+        }
+        .footer-logo-sub {
+            font-family: var(--font-main);
+            font-size: 0.6rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            color: var(--text-muted);
         }
         .footer-menu {
             display: flex;
@@ -577,11 +609,13 @@
         }
 
         @media (max-width: 400px) {
-            .heading-solens { font-size: 2.8rem; }
-            .heading-photostudio { font-size: 0.6rem; letter-spacing: 0.3em; }
+            .heading-solens { font-size: 2.8rem; letter-spacing: 0.15em; }
+            .heading-photostudio { font-size: 0.6rem; letter-spacing: 0.35em; }
             .container { padding: 0 1.2rem; }
             .mobile-nav-link { font-size: 1.1rem; }
             .about-img { height: 300px; }
+            .logo-main { font-size: 1.5rem; }
+            .logo-sub { font-size: 0.5rem; letter-spacing: 0.35em; }
         }
     </style>
 </head>
@@ -589,7 +623,10 @@
 
     <!-- Header & Menu -->
     <header id="header">
-        <a href="#" onclick="navigateTo('home'); return false;" class="logo">Solens</a>
+        <a href="#" onclick="navigateTo('home'); return false;" class="logo-lockup">
+            <span class="logo-main">SOLENS</span>
+            <span class="logo-sub">PHOTOSTUDIO</span>
+        </a>
         
         <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Toggle menu">
             <span></span><span></span><span></span>
@@ -648,12 +685,12 @@
                 <div class="hero-content">
                     <h1 class="main-heading">
                         <span class="heading-solens">
-                            <span lang="en">Solens</span>
-                            <span lang="hy">Solens</span>
+                            <span lang="en">SOLENS</span>
+                            <span lang="hy">SOLENS</span>
                         </span>
                         <span class="heading-photostudio">
-                            <span lang="en">Photostudio</span>
-                            <span lang="hy">Ֆոտոստուդիա</span>
+                            <span lang="en">PHOTOSTUDIO</span>
+                            <span lang="hy">ՖՈՏՈՍՏՈՒԴԻԱ</span>
                         </span>
                     </h1>
                     <p class="tagline">
@@ -895,7 +932,10 @@
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <div class="footer-logo">Solens</div>
+            <div class="footer-logo-lockup">
+                <span class="footer-logo-main">SOLENS</span>
+                <span class="footer-logo-sub">PHOTOSTUDIO</span>
+            </div>
             
             <div class="footer-menu">
                 <a href="#" onclick="navigateTo('home'); return false;" class="footer-link">
