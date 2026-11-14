@@ -16,14 +16,14 @@
         /* --- VARIABLES & RESET --- */
         :root {
             --bg: #ffffff;
-            --bg-cream: #ffffff; /* Changed to pure white */
-            --bg-book: #ffffff; /* Pure white for booking section */
-            --text: #111111; /* Strictly requested black */
+            --bg-cream: #ffffff;
+            --bg-book: #ffffff;
+            --text: #111111;
             --text-muted: #4e4c4c; 
             
             --accent: #CCD5AE;
             --accent-hover: #ccd5ae;
-            --divider: #e0e0e0; /* Updated divider for white background */
+            --divider: #e0e0e0;
             
             --font-logo: 'Montserrat', sans-serif;
             --font-main: 'Montserrat', sans-serif;
@@ -221,7 +221,7 @@
             justify-content: space-between;
             align-items: center;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.95); /* Pure white with blur */
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -305,7 +305,7 @@
             left: 0;
             width: 100%;
             height: 100dvh;
-            background: rgba(255, 255, 255, 0.98); /* Pure white overlay */
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 1001;
             display: flex;
@@ -449,7 +449,7 @@
         /* --- BOOKING PAGE --- */
         .booking-section { 
             text-align: center; 
-            background-color: var(--bg-book) !important; /* Pure white #FFFFFF */
+            background-color: var(--bg-book) !important;
             min-height: 100vh;
         }
         .booking-form {
@@ -527,7 +527,7 @@
 
         /* --- FOOTER --- */
         footer {
-            background-color: #ffffff; /* Pure white */
+            background-color: #ffffff;
             color: var(--text-muted);
             padding: 5rem 0 3rem;
             text-align: center;
@@ -729,7 +729,7 @@
     </div>
 
     <main>
-        <!-- HOME PAGE (Now includes Hero, About Us, and Our Spaces) -->
+        <!-- HOME PAGE -->
         <div id="view-home" class="page-view active">
             <!-- Hero Section -->
             <section class="hero">
@@ -755,7 +755,7 @@
                 </div>
             </section>
 
-            <!-- About Us Section (Added to Homepage) -->
+            <!-- About Us Section -->
             <section class="content-section">
                 <div class="container">
                     <h4>
@@ -790,7 +790,7 @@
                 </div>
             </section>
 
-            <!-- Our Spaces Section (Added to Homepage) -->
+            <!-- Our Spaces Section -->
             <section class="content-section alt-bg">
                 <div class="container">
                     <h4>
@@ -852,7 +852,7 @@
             </section>
         </div>
 
-        <!-- ABOUT PAGE (Kept for navigation consistency, contains extended info if needed) -->
+        <!-- ABOUT PAGE -->
         <div id="view-about" class="page-view">
             <section class="content-section">
                 <div class="container">
@@ -873,7 +873,7 @@
             </section>
         </div>
 
-        <!-- STUDIOS PAGE (Kept for navigation consistency) -->
+        <!-- STUDIOS PAGE -->
         <div id="view-studios" class="page-view">
             <section class="content-section">
                 <div class="container">
@@ -1013,8 +1013,12 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/37493320695" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <!-- WhatsApp Floating Button (Updated) -->
+    <a href="https://wa.me/37493320695?text=Hello%20Solens%20Photostudio!%20I%20would%20like%20to%20book%20a%20studio."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="whatsapp-float"
+       aria-label="Chat on WhatsApp">
         <img src="whatsapp-icon.png" alt="WhatsApp">
     </a>
 
