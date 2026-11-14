@@ -939,27 +939,34 @@
                     <h2><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span></h2>
                     <div class="divider"></div>
                     
-                    <form class="booking-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon. / Շնորհակալություն: Մենք շուտով կկապվենք Ձեզ հետ:'); this.reset();">
+                    <form class="booking-form" action="https://formsubmit.co/solensphotostudio@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Solens Photostudio Booking">
+                        <input type="hidden" name="_captcha" value="true">
+                        
                         <div class="form-group">
                             <label><span lang="en">Full Name</span><span lang="hy">Անուն Ազգանուն</span></label>
-                            <input type="text" required autocomplete="name" placeholder=" ">
+                            <input type="text" name="Full Name" required autocomplete="name">
                         </div>
+
                         <div class="form-group">
                             <label><span lang="en">Phone Number</span><span lang="hy">Հեռախոսահամար</span></label>
-                            <input type="tel" required autocomplete="tel" placeholder="+374 ">
+                            <input type="tel" name="Phone Number" required autocomplete="tel" placeholder="+374 ">
                         </div>
+
                         <div class="form-group">
                             <label><span lang="en">Preferred Room</span><span lang="hy">Ցանկալի Սրահ</span></label>
-                            <select required>
+                            <select name="Studio" required>
                                 <option value="" disabled selected><span lang="en">Select a room...</span><span lang="hy">Ընտրեք սրահ...</span></option>
-                                <option value="musa">MUSA</option>
-                                <option value="mini-musa">MINI MUSA</option>
+                                <option value="MUSA">MUSA</option>
+                                <option value="MINI MUSA">MINI MUSA</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label><span lang="en">Preferred Date & Time</span><span lang="hy">Ցանկալի Ամսաթիվ և Ժամ</span></label>
-                            <input type="datetime-local" required>
+                            <input type="datetime-local" name="Date and Time" required>
                         </div>
+
                         <button type="submit" class="btn btn-accent" style="margin-top: 1rem; width: 100%;">
                             <span lang="en">Send Request</span>
                             <span lang="hy">Ուղարկել Հայտ</span>
