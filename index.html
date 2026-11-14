@@ -593,6 +593,34 @@
             letter-spacing: 0.15em;
         }
 
+        /* --- WHATSAPP FLOATING BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        .whatsapp-float img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
         /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 900px) {
             .container { padding: 0 1.5rem; }
@@ -620,6 +648,17 @@
             .logo-sub { font-size: 0.5rem; letter-spacing: 0.45em; }
             .heading-solens { letter-spacing: 0.15em; }
             .heading-photostudio { letter-spacing: 0.4em; }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-float img {
+                width: 26px;
+                height: 26px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -973,6 +1012,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/37493320695" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
+    </a>
 
     <!-- JavaScript -->
     <script>
