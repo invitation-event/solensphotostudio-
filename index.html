@@ -621,6 +621,66 @@
             object-fit: contain;
         }
 
+        /* --- BOOKING CALENDAR & HOURS GRID --- */
+        .booking-legend {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            font-size: 12px;
+            margin: 15px 0;
+        }
+        .free-dot, .busy-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .free-dot { background: #81976a; }
+        .busy-dot { background: #bd7777; }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 9px;
+            margin-top: 15px;
+        }
+        .hour-slot {
+            border: 1px solid #81976a;
+            background: #f0f3e9;
+            color: #35452d;
+            padding: 13px 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: var(--font-main);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .hour-slot.busy {
+            background: #f6e9e9;
+            border-color: #d8b2b2;
+            color: #a05b5b;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+        .hour-slot.selected {
+            background: #ccd5ae;
+            border: 2px solid #596b46;
+            color: #111;
+        }
+        .hour-slot:disabled {
+            opacity: 0.85;
+        }
+        .booking-summary {
+            font-size: 14px;
+            line-height: 2;
+            text-align: left;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #fafafa;
+            border-left: 3px solid var(--accent);
+        }
+
         /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 900px) {
             .container { padding: 0 1.5rem; }
@@ -666,6 +726,9 @@
             .container { padding: 0 1.2rem; }
             .mobile-nav-link { font-size: 1.1rem; }
             .about-img { height: 300px; }
+            .hours-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     </style>
 </head>
@@ -935,42 +998,93 @@
         <div id="view-booking" class="page-view booking-section">
             <section class="content-section">
                 <div class="container">
-                    <h4><span lang="en">Reservations</span><span lang="hy">Ամրագրումներ</span></h4>
-                    <h2><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span></h2>
+                    <h4>
+                        <span lang="en">Reservations</span>
+                        <span lang="hy">Ամրագրումներ</span>
+                    </h4>
+                    <h2>
+                        <span lang="en">Book a Studio</span>
+                        <span lang="hy">Ամրագրել Ստուդիա</span>
+                    </h2>
                     <div class="divider"></div>
                     
-                    <form class="booking-form" action="https://formsubmit.co/solensphotostudio@gmail.com" method="POST">
-                        <input type="hidden" name="_subject" value="New Solens Photostudio Booking">
-                        <input type="hidden" name="_captcha" value="false">
-                        
+                    <form class="booking-form" id="bookingForm">
                         <div class="form-group">
-                            <label><span lang="en">Full Name</span><span lang="hy">Անուն Ազգանուն</span></label>
-                            <input type="text" name="Full Name" required autocomplete="name">
+                            <label>
+                                <span lang="en">Full Name</span>
+                                <span lang="hy">Անուն Ազգանուն</span>
+                            </label>
+                            <input id="customerName" type="text" required autocomplete="name">
                         </div>
 
                         <div class="form-group">
-                            <label><span lang="en">Phone Number</span><span lang="hy">Հեռախոսահամար</span></label>
-                            <input type="tel" name="Phone Number" required autocomplete="tel" placeholder="+374 ">
+                            <label>
+                                <span lang="en">Phone Number</span>
+                                <span lang="hy">Հեռախոսահամար</span>
+                            </label>
+                            <input id="customerPhone" type="tel" placeholder="+374 " required autocomplete="tel">
                         </div>
 
                         <div class="form-group">
-                            <label><span lang="en">Preferred Room</span><span lang="hy">Ցանկալի Սրահ</span></label>
-                            <select name="Studio" required>
-                                <option value="" disabled selected><span lang="en">Select a room...</span><span lang="hy">Ընտրեք սրահ...</span></option>
-                                <option value="MUSA">MUSA</option>
-                                <option value="MINI MUSA">MINI MUSA</option>
+                            <label>
+                                <span lang="en">Choose Studio</span>
+                                <span lang="hy">Ընտրեք սրահը</span>
+                            </label>
+                            <select id="studioSelect" required>
+                                <option value="MUSA">MUSA — 12,000 AMD / hour</option>
+                                <option value="MINI MUSA">MINI MUSA — 10,000 AMD / hour</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label><span lang="en">Preferred Date & Time</span><span lang="hy">Ցանկալի Ամսաթիվ և Ժամ</span></label>
-                            <input type="datetime-local" name="Date and Time" required>
+                            <label>
+                                <span lang="en">Choose Date</span>
+                                <span lang="hy">Ընտրեք ամսաթիվը</span>
+                            </label>
+                            <input type="date" id="bookingDate" required>
                         </div>
 
-                        <button type="submit" class="btn btn-accent" style="margin-top: 1rem; width: 100%;">
-                            <span lang="en">Send Request</span>
-                            <span lang="hy">Ուղարկել Հայտ</span>
+                        <div class="form-group">
+                            <label>
+                                <span lang="en">Available and Booked Hours</span>
+                                <span lang="hy">Ազատ և զբաղված ժամեր</span>
+                            </label>
+
+                            <div class="booking-legend">
+                                <span class="free-dot"></span>
+                                <span lang="en">Available</span>
+                                <span lang="hy">Ազատ</span>
+                                <span class="busy-dot"></span>
+                                <span lang="en">Booked</span>
+                                <span lang="hy">Զբաղված</span>
+                            </div>
+
+                            <div id="hoursGrid" class="hours-grid">
+                                <p>
+                                    <span lang="en">Choose a date to see available hours.</span>
+                                    <span lang="hy">Ընտրեք ամսաթիվը՝ ժամերը տեսնելու համար։</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span lang="en">Booking Duration</span>
+                                <span lang="hy">Ամրագրման տևողությունը</span>
+                            </label>
+                            <select id="durationSelect" required disabled>
+                                <option value="">Select duration / Ընտրեք տևողությունը</option>
+                            </select>
+                        </div>
+
+                        <div id="bookingSummary" class="booking-summary"></div>
+
+                        <button type="submit" class="btn btn-accent" id="bookingSubmit" style="margin-top:1rem; width:100%;">
+                            <span lang="en">Book Now</span>
+                            <span lang="hy">Ամրագրել հիմա</span>
                         </button>
+
+                        <p id="bookingMessage" role="status" style="text-align:center; margin-top:15px;"></p>
                     </form>
                 </div>
             </section>
@@ -1020,7 +1134,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button (Updated) -->
+    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/37493320695?text=Hello%20Solens%20Photostudio!%20I%20would%20like%20to%20book%20a%20studio."
        target="_blank"
        rel="noopener noreferrer"
@@ -1028,6 +1142,9 @@
        aria-label="Chat on WhatsApp">
         <img src="whatsapp-icon.png" alt="WhatsApp">
     </a>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- JavaScript -->
     <script>
