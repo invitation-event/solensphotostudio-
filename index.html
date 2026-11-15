@@ -7,42 +7,28 @@
     <meta name="theme-color" content="#ffffff"> 
     <title>SOLENS PHOTOSTUDIO</title>
     
-    <!-- Montserrat with very thin weights for the minimalist geometric aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     
     <style>
-        /* --- VARIABLES & RESET --- */
         :root {
             --bg: #ffffff;
             --bg-cream: #ffffff;
             --bg-book: #ffffff;
             --text: #111111;
             --text-muted: #4e4c4c; 
-            
             --accent: #CCD5AE;
             --accent-hover: #ccd5ae;
             --divider: #e0e0e0;
-            
             --font-logo: 'Montserrat', sans-serif;
             --font-main: 'Montserrat', sans-serif;
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             --header-height: 110px;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent; 
-            -webkit-touch-callout: none;
-        }
-        
-        html { 
-            scroll-behavior: smooth; 
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-main);
             font-weight: 300;
@@ -54,7 +40,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- TYPOGRAPHY --- */
         .nav-link, .btn, .lang-btn, .footer-link, h4 {
             font-family: var(--font-main);
             font-weight: 400;
@@ -63,7 +48,6 @@
             color: var(--text);
         }
         
-        /* --- REFINED LOGO LOCKUP --- */
         .logo-lockup {
             display: flex;
             flex-direction: column;
@@ -90,10 +74,8 @@
             letter-spacing: 0.6em;
             color: #111111;
         }
-        .logo-lockup:hover .logo-main { opacity: 0.7; }
-        .logo-lockup:hover .logo-sub { opacity: 0.7; }
+        .logo-lockup:hover .logo-main, .logo-lockup:hover .logo-sub { opacity: 0.7; }
 
-        /* Hero Heading Lockup */
         .main-heading {
             display: flex;
             flex-direction: column;
@@ -171,28 +153,16 @@
             margin: 0 auto 3rem;
         }
 
-        /* --- UTILITIES & LANGUAGE LOGIC --- */
-        .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 2rem; 
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         
         [lang="hy"] { display: none; }
         body.lang-hy [lang="en"] { display: none; }
         body.lang-hy [lang="hy"] { display: inline; }
-        
         body.lang-hy h1[lang="hy"], body.lang-hy h2[lang="hy"], body.lang-hy h3[lang="hy"], 
         body.lang-hy h4[lang="hy"], body.lang-hy p[lang="hy"], body.lang-hy div[lang="hy"],
-        body.lang-hy li[lang="hy"], body.lang-hy option[lang="hy"], body.lang-hy span[lang="hy"] { 
-            display: block; 
-        }
-        body.lang-hy .heading-photostudio[lang="hy"], 
-        body.lang-hy .tagline[lang="hy"] { 
-            display: inline; 
-        }
+        body.lang-hy li[lang="hy"], body.lang-hy option[lang="hy"], body.lang-hy span[lang="hy"] { display: block; }
+        body.lang-hy .heading-photostudio[lang="hy"], body.lang-hy .tagline[lang="hy"] { display: inline; }
 
-        /* --- PAGE ROUTING --- */
         .page-view {
             display: none;
             opacity: 0;
@@ -208,7 +178,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- HEADER & MENU --- */
         header {
             position: fixed;
             top: 0;
@@ -227,12 +196,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
         .nav-link {
             font-size: 0.7rem;
             text-decoration: none;
@@ -271,10 +235,7 @@
             letter-spacing: 0.15em;
         }
         .lang-btn:hover { color: var(--text); }
-        .lang-btn.active {
-            color: var(--text);
-            border-bottom: 1px solid var(--text);
-        }
+        .lang-btn.active { color: var(--text); border-bottom: 1px solid var(--text); }
 
         .hamburger { 
             display: none; 
@@ -298,7 +259,6 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        /* --- MOBILE MENU OVERLAY --- */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -317,10 +277,7 @@
             pointer-events: none;
             transition: var(--transition);
         }
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .mobile-menu-overlay.active { opacity: 1; pointer-events: all; }
         .mobile-nav-link {
             font-family: var(--font-main);
             font-size: 1.2rem;
@@ -332,7 +289,6 @@
         }
         .mobile-nav-link:hover { color: var(--accent-hover); }
 
-        /* --- HERO SECTION --- */
         .hero {
             min-height: 100dvh;
             display: flex;
@@ -346,27 +302,12 @@
             background-position: center;
             padding-top: 0;
         }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-        }
+        .hero-content { position: relative; z-index: 1; padding: 2rem; }
 
-        /* --- SECTIONS GENERAL --- */
-        section.content-section {
-            padding: 6rem 0;
-        }
-        section.content-section.alt-bg {
-            background-color: #fafafa;
-        }
+        section.content-section { padding: 6rem 0; }
+        section.content-section.alt-bg { background-color: #fafafa; }
 
-        /* --- ABOUT US --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
         .about-img-wrapper { overflow: hidden; }
         .about-img {
             width: 100%;
@@ -375,27 +316,12 @@
             transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .about-img-wrapper:hover .about-img { transform: scale(1.03); }
-        .about-text p {
-            font-size: 1.05rem;
-            line-height: 2;
-            margin-bottom: 1.5rem;
-        }
+        .about-text p { font-size: 1.05rem; line-height: 2; margin-bottom: 1.5rem; }
 
-        /* --- OUR SPACES --- */
-        .rooms-container {
-            display: flex;
-            flex-direction: column;
-            gap: 6rem;
-        }
-        .room-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
+        .rooms-container { display: flex; flex-direction: column; gap: 6rem; }
+        .room-item { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
         .room-item.reverse .room-img-wrapper { grid-column: 2; }
         .room-item.reverse .room-text { grid-column: 1; }
-        
         .room-img-wrapper { overflow: hidden; }
         .room-img {
             width: 100%;
@@ -404,35 +330,11 @@
             transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .room-img-wrapper:hover .room-img { transform: scale(1.04); }
-        
-        .room-price {
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            color: var(--text);
-            margin: 1.5rem 0;
-            font-weight: 400;
-        }
-        .room-desc {
-            font-size: 1rem;
-            line-height: 1.9;
-            margin-bottom: 2.5rem;
-        }
+        .room-price { font-size: 0.85rem; letter-spacing: 0.2em; color: var(--text); margin: 1.5rem 0; font-weight: 400; }
+        .room-desc { font-size: 1rem; line-height: 1.9; margin-bottom: 2.5rem; }
 
-        /* --- RULES PAGE --- */
-        .rules-list {
-            max-width: 700px;
-            margin: 0 auto;
-            list-style: none;
-            counter-reset: rule-counter;
-            padding: 4rem 0;
-        }
-        .rules-list li {
-            position: relative;
-            padding-left: 3.5rem;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-            line-height: 1.8;
-        }
+        .rules-list { max-width: 700px; margin: 0 auto; list-style: none; counter-reset: rule-counter; padding: 4rem 0; }
+        .rules-list li { position: relative; padding-left: 3.5rem; margin-bottom: 2rem; font-size: 1rem; line-height: 1.8; }
         .rules-list li::before {
             counter-increment: rule-counter;
             content: counter(rule-counter, decimal-leading-zero);
@@ -446,27 +348,9 @@
             color: var(--accent-hover);
         }
 
-        /* --- BOOKING PAGE --- */
-        .booking-section { 
-            text-align: center; 
-            background-color: var(--bg-book) !important;
-            min-height: 100vh;
-        }
-        .booking-form {
-            max-width: 500px;
-            margin: 3rem auto 0;
-            display: grid;
-            gap: 2.5rem;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            margin-bottom: 0.8rem;
-            font-weight: 400;
-            color: var(--text);
-        }
+        .booking-section { text-align: center; background-color: var(--bg-book) !important; min-height: 100vh; }
+        .booking-form { max-width: 500px; margin: 3rem auto 0; display: grid; gap: 2.5rem; text-align: left; }
+        .form-group label { display: block; font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 0.8rem; font-weight: 400; color: var(--text); }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 1rem 0;
@@ -483,9 +367,7 @@
             min-height: 48px;
             -webkit-appearance: none;
         }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-bottom-color: var(--text);
-        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-bottom-color: var(--text); }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group select {
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
@@ -495,7 +377,6 @@
             cursor: pointer;
         }
 
-        /* --- BUTTONS --- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -512,20 +393,10 @@
             cursor: pointer;
             min-height: 48px;
         }
-        .btn:hover {
-            background: var(--text);
-            color: #ffffff;
-        }
-        .btn-accent {
-            border-color: var(--text);
-        }
-        .btn-accent:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--text);
-        }
+        .btn:hover { background: var(--text); color: #ffffff; }
+        .btn-accent { border-color: var(--text); }
+        .btn-accent:hover { background: var(--accent); border-color: var(--accent); color: var(--text); }
 
-        /* --- FOOTER --- */
         footer {
             background-color: #ffffff;
             color: var(--text-muted);
@@ -533,67 +404,16 @@
             text-align: center;
             border-top: 1px solid var(--divider);
         }
-        .footer-logo-lockup {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 2.5rem;
-            text-decoration: none;
-        }
-        .footer-logo-main {
-            font-family: var(--font-logo);
-            font-weight: 200;
-            font-size: 2.4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.35em;
-            color: #111111;
-        }
-        .footer-logo-sub {
-            font-family: var(--font-logo);
-            font-weight: 300;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6em;
-            color: #111111;
-        }
-        .footer-menu {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 3.5rem;
-            flex-wrap: wrap;
-        }
-        .footer-link {
-            font-size: 0.7rem;
-            text-decoration: none;
-            transition: var(--transition);
-            padding: 0.5rem;
-        }
+        .footer-logo-lockup { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 2.5rem; text-decoration: none; }
+        .footer-logo-main { font-family: var(--font-logo); font-weight: 200; font-size: 2.4rem; text-transform: uppercase; letter-spacing: 0.35em; color: #111111; }
+        .footer-logo-sub { font-family: var(--font-logo); font-weight: 300; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.6em; color: #111111; }
+        .footer-menu { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
+        .footer-link { font-size: 0.7rem; text-decoration: none; transition: var(--transition); padding: 0.5rem; }
         .footer-link:hover { color: var(--text); }
-        
-        .contact-info {
-            margin-bottom: 3.5rem;
-            line-height: 2.2;
-            font-size: 0.9rem;
-        }
-        .contact-info strong {
-            color: var(--text);
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            font-size: 0.7rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .copyright {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            padding-top: 2.5rem;
-            border-top: 1px solid var(--divider);
-            letter-spacing: 0.15em;
-        }
+        .contact-info { margin-bottom: 3.5rem; line-height: 2.2; font-size: 0.9rem; }
+        .contact-info strong { color: var(--text); font-weight: 400; letter-spacing: 0.2em; font-size: 0.7rem; display: block; margin-bottom: 0.5rem; }
+        .copyright { font-size: 0.7rem; color: var(--text-muted); padding-top: 2.5rem; border-top: 1px solid var(--divider); letter-spacing: 0.15em; }
 
-        /* --- WHATSAPP FLOATING BUTTON --- */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -610,41 +430,14 @@
             transition: var(--transition);
             text-decoration: none;
         }
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        .whatsapp-float img {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
+        .whatsapp-float:hover { background-color: #128C7E; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+        .whatsapp-float img { width: 32px; height: 32px; object-fit: contain; }
 
-        /* --- BOOKING CALENDAR & HOURS GRID --- */
-        .booking-legend {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 9px;
-            font-size: 12px;
-            margin: 15px 0;
-        }
-        .free-dot, .busy-dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            display: inline-block;
-        }
+        .booking-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; font-size: 12px; margin: 15px 0; }
+        .free-dot, .busy-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
         .free-dot { background: #81976a; }
         .busy-dot { background: #bd7777; }
-        
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 9px;
-            margin-top: 15px;
-        }
+        .hours-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 15px; }
         .hour-slot {
             border: 1px solid #81976a;
             background: #f0f3e9;
@@ -656,111 +449,58 @@
             text-align: center;
             transition: var(--transition);
         }
-        .hour-slot.busy {
-            background: #f6e9e9;
-            border-color: #d8b2b2;
-            color: #a05b5b;
-            cursor: not-allowed;
-            text-decoration: line-through;
-        }
-        .hour-slot.selected {
-            background: #ccd5ae;
-            border: 2px solid #596b46;
-            color: #111;
-        }
-        .hour-slot:disabled {
-            opacity: 0.85;
-        }
-        .booking-summary {
-            font-size: 14px;
-            line-height: 2;
-            text-align: left;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: #fafafa;
-            border-left: 3px solid var(--accent);
-        }
+        .hour-slot.busy { background: #f6e9e9; border-color: #d8b2b2; color: #a05b5b; cursor: not-allowed; text-decoration: line-through; }
+        .hour-slot.selected { background: #ccd5ae; border: 2px solid #596b46; color: #111; }
+        .hour-slot:disabled { opacity: 0.85; }
+        .booking-summary { font-size: 14px; line-height: 2; text-align: left; margin-top: 1rem; padding: 1rem; background: #fafafa; border-left: 3px solid var(--accent); }
 
-        /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 900px) {
-            .container { padding: 0 1.5rem; }
-            header { padding: 0 1.5rem; }
+            .container, header { padding: 0 1.5rem; }
             .hamburger { display: flex; }
             .nav-menu { display: none; }
-            
-            .about-grid, .room-item { 
-                grid-template-columns: 1fr; 
-                gap: 2.5rem; 
-            }
+            .about-grid, .room-item { grid-template-columns: 1fr; gap: 2.5rem; }
             .room-item.reverse .room-img-wrapper { grid-column: 1; order: 1; }
             .room-item.reverse .room-text { grid-column: 1; order: 2; }
             .room-item { display: flex; flex-direction: column; }
             .room-item .room-img-wrapper { order: 1; }
             .room-item .room-text { order: 2; }
-            
             .about-img { height: 400px; }
             .room-img { aspect-ratio: 3/4; }
             .hero { background-position: center 30%; }
             .btn { width: 100%; }
             .footer-menu { gap: 1.5rem 2rem; flex-direction: column; align-items: center; }
-            
             .logo-main { font-size: 1.6rem; letter-spacing: 0.25em; }
             .logo-sub { font-size: 0.5rem; letter-spacing: 0.45em; }
             .heading-solens { letter-spacing: 0.15em; }
             .heading-photostudio { letter-spacing: 0.4em; }
-
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-            }
-            .whatsapp-float img {
-                width: 26px;
-                height: 26px;
-            }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .whatsapp-float img { width: 26px; height: 26px; }
         }
-
         @media (max-width: 400px) {
             .heading-solens { font-size: 2.2rem; }
             .container { padding: 0 1.2rem; }
             .mobile-nav-link { font-size: 1.1rem; }
             .about-img { height: 300px; }
-            .hours-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .hours-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body class="lang-en">
 
-    <!-- Header & Menu -->
     <header id="header">
         <a href="#" onclick="navigateTo('home'); return false;" class="logo-lockup">
             <span class="logo-main">SOLENS</span>
             <span class="logo-sub">PHOTOSTUDIO</span>
         </a>
-        
         <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
-        
         <ul class="nav-menu">
-            <li><a href="#" onclick="navigateTo('home'); return false;" class="nav-link">
-                <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
-            </a></li>
-            <li><a href="#" onclick="navigateTo('about'); return false;" class="nav-link">
-                <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
-            </a></li>
-            <li><a href="#" onclick="navigateTo('studios'); return false;" class="nav-link">
-                <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
-            </a></li>
-            <li><a href="#" onclick="navigateTo('rules'); return false;" class="nav-link">
-                <span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span>
-            </a></li>
-            <li><a href="#" onclick="navigateTo('booking'); return false;" class="nav-link">
-                <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
-            </a></li>
+            <li><a href="#" onclick="navigateTo('home'); return false;" class="nav-link"><span lang="en">Home</span><span lang="hy">Գլխավոր</span></a></li>
+            <li><a href="#" onclick="navigateTo('about'); return false;" class="nav-link"><span lang="en">About Us</span><span lang="hy">Մեր Մասին</span></a></li>
+            <li><a href="#" onclick="navigateTo('studios'); return false;" class="nav-link"><span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span></a></li>
+            <li><a href="#" onclick="navigateTo('rules'); return false;" class="nav-link"><span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span></a></li>
+            <li><a href="#" onclick="navigateTo('booking'); return false;" class="nav-link"><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span></a></li>
             <li class="lang-toggle">
                 <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English">EN</button>
                 <button class="lang-btn" onclick="setLang('hy')" aria-label="Switch to Armenian">HY</button>
@@ -768,23 +508,12 @@
         </ul>
     </header>
 
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenu">
-        <a href="#" onclick="navigateTo('home'); toggleMenu(); return false;" class="mobile-nav-link">
-            <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
-        </a>
-        <a href="#" onclick="navigateTo('about'); toggleMenu(); return false;" class="mobile-nav-link">
-            <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
-        </a>
-        <a href="#" onclick="navigateTo('studios'); toggleMenu(); return false;" class="mobile-nav-link">
-            <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
-        </a>
-        <a href="#" onclick="navigateTo('rules'); toggleMenu(); return false;" class="mobile-nav-link">
-            <span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span>
-        </a>
-        <a href="#" onclick="navigateTo('booking'); toggleMenu(); return false;" class="mobile-nav-link">
-            <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
-        </a>
+        <a href="#" onclick="navigateTo('home'); toggleMenu(); return false;" class="mobile-nav-link"><span lang="en">Home</span><span lang="hy">Գլխավոր</span></a>
+        <a href="#" onclick="navigateTo('about'); toggleMenu(); return false;" class="mobile-nav-link"><span lang="en">About Us</span><span lang="hy">Մեր Մասին</span></a>
+        <a href="#" onclick="navigateTo('studios'); toggleMenu(); return false;" class="mobile-nav-link"><span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span></a>
+        <a href="#" onclick="navigateTo('rules'); toggleMenu(); return false;" class="mobile-nav-link"><span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span></a>
+        <a href="#" onclick="navigateTo('booking'); toggleMenu(); return false;" class="mobile-nav-link"><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span></a>
         <div class="lang-toggle" style="border: none; margin-top: 2rem;">
             <button class="lang-btn active" onclick="setLang('en')">EN</button>
             <button class="lang-btn" onclick="setLang('hy')">HY</button>
@@ -792,122 +521,62 @@
     </div>
 
     <main>
-        <!-- HOME PAGE -->
         <div id="view-home" class="page-view active">
-            <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
                     <h1 class="main-heading">
-                        <span class="heading-solens">
-                            <span lang="en">SOLENS</span>
-                            <span lang="hy">SOLENS</span>
-                        </span>
-                        <span class="heading-photostudio">
-                            <span lang="en">PHOTOSTUDIO</span>
-                            <span lang="hy">PHOTOSTUDIO</span>
-                        </span>
+                        <span class="heading-solens"><span lang="en">SOLENS</span><span lang="hy">SOLENS</span></span>
+                        <span class="heading-photostudio"><span lang="en">PHOTOSTUDIO</span><span lang="hy">PHOTOSTUDIO</span></span>
                     </h1>
-                    <p class="tagline">
-                        <span lang="en"></span>
-                        <span lang="hy"></span>
-                    </p>
-                    <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent">
-                        <span lang="en">Book Studio</span>
-                        <span lang="hy">Ամրագրել Ստուդիա</span>
-                    </a>
+                    <p class="tagline"><span lang="en"></span><span lang="hy"></span></p>
+                    <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent"><span lang="en">Book Studio</span><span lang="hy">Ամրագրել Ստուդիա</span></a>
                 </div>
             </section>
 
-            <!-- About Us Section -->
             <section class="content-section">
                 <div class="container">
-                    <h4>
-                        <span lang="en"></span>
-                        <span lang="hy"></span>
-                    </h4>
-                    <h2>
-                        <span lang="en">About Us</span>
-                        <span lang="hy">Մեր Մասին</span>
-                    </h2>
+                    <h4><span lang="en"></span><span lang="hy"></span></h4>
+                    <h2><span lang="en">About Us</span><span lang="hy">Մեր Մասին</span></h2>
                     <div class="divider"></div>
-                    
                     <div class="about-grid">
                         <div class="about-img-wrapper">
                             <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/c663464f90e4e9dcc05e97569d5a2edc.jpg?v=1790422831" alt="Solens Studio Interior" class="about-img" loading="lazy" decoding="async">
                         </div>
                         <div class="about-text">
-                            <h3 style="text-align: left; margin-bottom: 1.5rem;">
-                                <span lang="en">Our Story & Vision</span>
-                                <span lang="hy">Մեր Պատմությունն ու Տեսլականը</span>
-                            </h3>
-                            <p>
-                                <span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography. With a total area of 180 square meters, the studio features 4.5-meter-high ceilings, large windows, abundant natural light, and a spacious cyclorama.</span>
-                                <span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ 180 քմ ընդհանուր մակերեսով ֆոտոստուդիան առանձնանում է 4.5 մետր բարձրությամբ առաստաղներով, մեծ պատուհաններով, բնական լուսավորությամբ և ընդարձակ ցիկլորամայով։</span>
-                            </p>
-                            <p>
-                                <span lang="en">What makes us special is our dedication to providing a luxurious, comfortable, and fully equipped space where every creative concept can come to life, supported by a team that understands the art of visual storytelling.</span>
-                                <span lang="hy">Մեզ առանձնահատուկ է դարձնում մեր նվիրվածությունը՝ ապահովելու շքեղ, հարմարավետ և լիովին հագեցած տարածք, որտեղ յուրաքանչյուր ստեղծագործական գաղափար կարող է կյանքի կոչվել՝ տեսողական պատմվածքի արվեստը հասկացող թիմի աջակցությամբ։</span>
-                            </p>
+                            <h3 style="text-align: left; margin-bottom: 1.5rem;"><span lang="en">Our Story & Vision</span><span lang="hy">Մեր Պատմությունն ու Տեսլականը</span></h3>
+                            <p><span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography. With a total area of 180 square meters, the studio features 4.5-meter-high ceilings, large windows, abundant natural light, and a spacious cyclorama.</span><span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ 180 քմ ընդհանուր մակերեսով ֆոտոստուդիան առանձնանում է 4.5 մետր բարձրությամբ առաստաղներով, մեծ պատուհաններով, բնական լուսավորությամբ և ընդարձակ ցիկլորամայով։</span></p>
+                            <p><span lang="en">What makes us special is our dedication to providing a luxurious, comfortable, and fully equipped space where every creative concept can come to life, supported by a team that understands the art of visual storytelling.</span><span lang="hy">Մեզ առանձնահատուկ է դարձնում մեր նվիրվածությունը՝ ապահովելու շքեղ, հարմարավետ և լիովին հագեցած տարածք, որտեղ յուրաքանչյուր ստեղծագործական գաղափար կարող է կյանքի կոչվել՝ տեսողական պատմվածքի արվեստը հասկացող թիմի աջակցությամբ։</span></p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Our Spaces Section -->
             <section class="content-section alt-bg">
                 <div class="container">
-                    <h4>
-                        <span lang="en">Our Spaces</span>
-                        <span lang="hy">Մեր Տարածքները</span>
-                    </h4>
-                    <h2>
-                        <span lang="en">The Studios</span>
-                        <span lang="hy">Ստուդիաները</span>
-                    </h2>
+                    <h4><span lang="en">Our Spaces</span><span lang="hy">Մեր Տարածքները</span></h4>
+                    <h2><span lang="en">The Studios</span><span lang="hy">Ստուդիաները</span></h2>
                     <div class="divider"></div>
-
                     <div class="rooms-container">
-                        <!-- Room 1 -->
                         <div class="room-item">
                             <div class="room-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Musa Studio" class="room-img" loading="lazy" decoding="async">
                             </div>
                             <div class="room-text">
                                 <h3>MUSA</h3>
-                                <div class="room-price">
-                                    <span lang="en">1 HOUR — 12,000 AMD</span>
-                                    <span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span>
-                                </div>
-                                <p class="room-desc">
-                                    <span lang="en">The Muse is a symbol of creativity, beauty, and inspiration. A spacious and stylish 120-square-meter space where every idea can turn into art. Featuring a 6-meter-long cyclorama, a variety of colorful backdrops, and uniquely designed shooting areas, MUSA offers the perfect setting for commercial, individual, family, class, and group photoshoots.</span>
-                                    <span lang="hy">Մուսան ստեղծագործության, գեղեցկության և ներշնչանքի խորհրդանիշն է։ 120 քմ ընդարձակ և ոճային տարածք, որտեղ յուրաքանչյուր գաղափար կարող է վերածվել արվեստի։ 6 մետր երկարությամբ ցիկլորաման, գունային բազմազան ֆոներն ու յուրահատուկ նկարահանման գոտիները հնարավորություն են տալիս իրականացնել գովազդային, անհատական, ընտանեկան, դասարանական և խմբային նկարահանումներ։</span>
-                                </p>
-                                <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent">
-                                    <span lang="en">Book MUSA</span>
-                                    <span lang="hy">Ամրագրել MUSA</span>
-                                </a>
+                                <div class="room-price"><span lang="en">1 HOUR — 12,000 AMD</span><span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span></div>
+                                <p class="room-desc"><span lang="en">The Muse is a symbol of creativity, beauty, and inspiration. A spacious and stylish 120-square-meter space where every idea can turn into art. Featuring a 6-meter-long cyclorama, a variety of colorful backdrops, and uniquely designed shooting areas, MUSA offers the perfect setting for commercial, individual, family, class, and group photoshoots.</span><span lang="hy">Մուսան ստեղծագործության, գեղեցկության և ներշնչանքի խորհրդանիշն է։ 120 քմ ընդարձակ և ոճային տարածք, որտեղ յուրաքանչյուր գաղափար կարող է վերածվել արվեստի։ 6 մետր երկարությամբ ցիկլորաման, գունային բազմազան ֆոներն ու յուրահատուկ նկարահանման գոտիները հնարավորություն են տալիս իրականացնել գովազդային, անհատական, ընտանեկան, դասարանական և խմբային նկարահանումներ։</span></p>
+                                <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent"><span lang="en">Book MUSA</span><span lang="hy">Ամրագրել MUSA</span></a>
                             </div>
                         </div>
-
-                        <!-- Room 2 -->
                         <div class="room-item reverse">
                             <div class="room-img-wrapper">
                                 <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/kids.jpg?v=1790424277" alt="Mini Musa Studio" class="room-img" loading="lazy" decoding="async">
                             </div>
                             <div class="room-text">
                                 <h3>MINI MUSA</h3>
-                                <div class="room-price">
-                                    <span lang="en">1 HOUR — 10,000 AMD</span>
-                                    <span lang="hy">1 ԺԱՄ — 10,000 ԴՐԱՄ</span>
-                                </div>
-                                <p class="room-desc">
-                                    <span lang="en">Inspired by the magic of childhood, creativity, and the beauty of little moments, MINI MUSA is a space where the warmest memories come to life. A cozy and welcoming 60-square-meter space, designed to capture children’s smiles, genuine emotions, and beautiful family moments with a small cyclorama and a wide selection of props.</span>
-                                    <span lang="hy">Ոգեշնչված մանկական հեքիաթով, ստեղծագործությամբ և փոքրիկ պահերի գեղեցկությամբ՝ MINI MUSA-ն տարածք է, որտեղ ծնվում են ամենաջերմ հիշողությունները։ 60 քմ հարմարավետ և ջերմ տարածք՝ ստեղծված երեխաների ժպիտները, անկեղծ հույզերն ու ընտանեկան գեղեցիկ պահերը լուսանկարներում պահպանելու համար։</span>
-                                </p>
-                                <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent">
-                                    <span lang="en">Book MINI MUSA</span>
-                                    <span lang="hy">Ամրագրել MINI MUSA</span>
-                                </a>
+                                <div class="room-price"><span lang="en">1 HOUR — 10,000 AMD</span><span lang="hy">1 ԺԱՄ — 10,000 ԴՐԱՄ</span></div>
+                                <p class="room-desc"><span lang="en">Inspired by the magic of childhood, creativity, and the beauty of little moments, MINI MUSA is a space where the warmest memories come to life. A cozy and welcoming 60-square-meter space, designed to capture children’s smiles, genuine emotions, and beautiful family moments with a small cyclorama and a wide selection of props.</span><span lang="hy">Ոգեշնչված մանկական հեքիաթով, ստեղծագործությամբ և փոքրիկ պահերի գեղեցկությամբ՝ MINI MUSA-ն տարածք է, որտեղ ծնվում են ամենաջերմ հիշողությունները։ 60 քմ հարմարավետ և ջերմ տարածք՝ ստեղծված երեխաների ժպիտները, անկեղծ հույզերն ու ընտանեկան գեղեցիկ պահերը լուսանկարներում պահպանելու համար։</span></p>
+                                <a href="#" onclick="navigateTo('booking'); return false;" class="btn btn-accent"><span lang="en">Book MINI MUSA</span><span lang="hy">Ամրագրել MINI MUSA</span></a>
                             </div>
                         </div>
                     </div>
@@ -915,7 +584,6 @@
             </section>
         </div>
 
-        <!-- ABOUT PAGE -->
         <div id="view-about" class="page-view">
             <section class="content-section">
                 <div class="container">
@@ -936,7 +604,6 @@
             </section>
         </div>
 
-        <!-- STUDIOS PAGE -->
         <div id="view-studios" class="page-view">
             <section class="content-section">
                 <div class="container">
@@ -971,7 +638,6 @@
             </section>
         </div>
 
-        <!-- RULES PAGE -->
         <div id="view-rules" class="page-view">
             <section class="content-section">
                 <div class="container">
@@ -994,96 +660,53 @@
             </section>
         </div>
 
-        <!-- BOOKING PAGE -->
         <div id="view-booking" class="page-view booking-section">
             <section class="content-section">
                 <div class="container">
-                    <h4>
-                        <span lang="en">Reservations</span>
-                        <span lang="hy">Ամրագրումներ</span>
-                    </h4>
-                    <h2>
-                        <span lang="en">Book a Studio</span>
-                        <span lang="hy">Ամրագրել Ստուդիա</span>
-                    </h2>
+                    <h4><span lang="en">Reservations</span><span lang="hy">Ամրագրումներ</span></h4>
+                    <h2><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span></h2>
                     <div class="divider"></div>
                     
                     <form class="booking-form" id="bookingForm">
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Full Name</span>
-                                <span lang="hy">Անուն Ազգանուն</span>
-                            </label>
+                            <label><span lang="en">Full Name</span><span lang="hy">Անուն Ազգանուն</span></label>
                             <input id="customerName" type="text" required autocomplete="name">
                         </div>
-
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Phone Number</span>
-                                <span lang="hy">Հեռախոսահամար</span>
-                            </label>
+                            <label><span lang="en">Phone Number</span><span lang="hy">Հեռախոսահամար</span></label>
                             <input id="customerPhone" type="tel" placeholder="+374 " required autocomplete="tel">
                         </div>
-
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Choose Studio</span>
-                                <span lang="hy">Ընտրեք սրահը</span>
-                            </label>
+                            <label><span lang="en">Choose Studio</span><span lang="hy">Ընտրեք սրահը</span></label>
                             <select id="studioSelect" required>
                                 <option value="MUSA">MUSA — 12,000 AMD / hour</option>
                                 <option value="MINI MUSA">MINI MUSA — 10,000 AMD / hour</option>
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Choose Date</span>
-                                <span lang="hy">Ընտրեք ամսաթիվը</span>
-                            </label>
+                            <label><span lang="en">Choose Date</span><span lang="hy">Ընտրեք ամսաթիվը</span></label>
                             <input type="date" id="bookingDate" required>
                         </div>
-
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Available and Booked Hours</span>
-                                <span lang="hy">Ազատ և զբաղված ժամեր</span>
-                            </label>
-
+                            <label><span lang="en">Available and Booked Hours</span><span lang="hy">Ազատ և զբաղված ժամեր</span></label>
                             <div class="booking-legend">
-                                <span class="free-dot"></span>
-                                <span lang="en">Available</span>
-                                <span lang="hy">Ազատ</span>
-                                <span class="busy-dot"></span>
-                                <span lang="en">Booked</span>
-                                <span lang="hy">Զբաղված</span>
+                                <span class="free-dot"></span><span lang="en">Available</span><span lang="hy">Ազատ</span>
+                                <span class="busy-dot"></span><span lang="en">Booked</span><span lang="hy">Զբաղված</span>
                             </div>
-
                             <div id="hoursGrid" class="hours-grid">
-                                <p>
-                                    <span lang="en">Choose a date to see available hours.</span>
-                                    <span lang="hy">Ընտրեք ամսաթիվը՝ ժամերը տեսնելու համար։</span>
-                                </p>
+                                <p><span lang="en">Choose a date to see available hours.</span><span lang="hy">Ընտրեք ամսաթիվը՝ ժամերը տեսնելու համար։</span></p>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label>
-                                <span lang="en">Booking Duration</span>
-                                <span lang="hy">Ամրագրման տևողությունը</span>
-                            </label>
+                            <label><span lang="en">Booking Duration</span><span lang="hy">Ամրագրման տևողությունը</span></label>
                             <select id="durationSelect" required disabled>
                                 <option value="">Select duration / Ընտրեք տևողությունը</option>
                             </select>
                         </div>
-
                         <div id="bookingSummary" class="booking-summary"></div>
-
                         <button type="submit" class="btn btn-accent" id="bookingSubmit" style="margin-top:1rem; width:100%;">
-                            <span lang="en">Book Now</span>
-                            <span lang="hy">Ամրագրել հիմա</span>
+                            <span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>
                         </button>
-
                         <p id="bookingMessage" role="status" style="text-align:center; margin-top:15px;"></p>
                     </form>
                 </div>
@@ -1091,84 +714,45 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-logo-lockup">
                 <span class="footer-logo-main">SOLENS</span>
                 <span class="footer-logo-sub">PHOTOSTUDIO</span>
             </div>
-            
             <div class="footer-menu">
-                <a href="#" onclick="navigateTo('home'); return false;" class="footer-link">
-                    <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
-                </a>
-                <a href="#" onclick="navigateTo('about'); return false;" class="footer-link">
-                    <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
-                </a>
-                <a href="#" onclick="navigateTo('studios'); return false;" class="footer-link">
-                    <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
-                </a>
-                <a href="#" onclick="navigateTo('rules'); return false;" class="footer-link">
-                    <span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span>
-                </a>
-                <a href="#" onclick="navigateTo('booking'); return false;" class="footer-link">
-                    <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
-                </a>
+                <a href="#" onclick="navigateTo('home'); return false;" class="footer-link"><span lang="en">Home</span><span lang="hy">Գլխավոր</span></a>
+                <a href="#" onclick="navigateTo('about'); return false;" class="footer-link"><span lang="en">About Us</span><span lang="hy">Մեր Մասին</span></a>
+                <a href="#" onclick="navigateTo('studios'); return false;" class="footer-link"><span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span></a>
+                <a href="#" onclick="navigateTo('rules'); return false;" class="footer-link"><span lang="en">Studio Rules</span><span lang="hy">Կանոններ</span></a>
+                <a href="#" onclick="navigateTo('booking'); return false;" class="footer-link"><span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span></a>
             </div>
-
             <div class="contact-info">
-                <p><strong><span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span></strong>
-                <span lang="en">Arshakunyats 254, Yerevan</span><span lang="hy">Արշակունյաց 254, Երևան</span></p>
-                
-                <p style="margin-top: 1.5rem;"><strong><span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span></strong>
-                +374 93 320695<br>
-                solensphotostudio@gmail.com</p>
+                <p><strong><span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span></strong><span lang="en">Arshakunyats 254, Yerevan</span><span lang="hy">Արշակունյաց 254, Երևան</span></p>
+                <p style="margin-top: 1.5rem;"><strong><span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span></strong>+374 93 320695<br>solensphotostudio@gmail.com</p>
             </div>
-
-            <div class="copyright">
-                &copy; 2026 SOLENS PHOTOSTUDIO. 
-                <span lang="en">ALL RIGHTS RESERVED.</span>
-                <span lang="hy">ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ:</span>
-            </div>
+            <div class="copyright">&copy; 2026 SOLENS PHOTOSTUDIO. <span lang="en">ALL RIGHTS RESERVED.</span><span lang="hy">ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ:</span></div>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/37493320695?text=Hello%20Solens%20Photostudio!%20I%20would%20like%20to%20book%20a%20studio."
-       target="_blank"
-       rel="noopener noreferrer"
-       class="whatsapp-float"
-       aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/37493320695?text=Hello%20Solens%20Photostudio!%20I%20would%20like%20to%20book%20a%20studio." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <img src="whatsapp-icon.png" alt="WhatsApp">
     </a>
 
-    <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- JavaScript -->
     <script>
         const SUPABASE_URL = 'https://llptrrnjmxwipmsylpru.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_AY_VIJYDk2f3MwFW2yxACQ__FTeiht0';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        const supabaseClient = window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-        // PAGE NAVIGATION
         function navigateTo(pageId) {
-            document.querySelectorAll('.page-view').forEach(page => {
-                page.classList.remove('active');
-            });
-
+            document.querySelectorAll('.page-view').forEach(page => page.classList.remove('active'));
             const target = document.getElementById('view-' + pageId);
-
             if (target) {
                 target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
-
             history.pushState(null, null, '#' + pageId);
         }
 
@@ -1177,38 +761,26 @@
             navigateTo(page);
         });
 
-        // LANGUAGE
         function setLang(lang) {
             document.body.className = `lang-${lang}`;
-
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle(
-                    'active',
-                    btn.textContent.trim() === lang.toUpperCase()
-                );
+                btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
-
             localStorage.setItem('solensPreferredLang', lang);
         }
 
         setLang(localStorage.getItem('solensPreferredLang') || 'en');
-
         const initialPage = location.hash.replace('#', '') || 'home';
         navigateTo(initialPage);
 
-        // MOBILE MENU
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const hamburger = document.getElementById('hamburgerBtn');
-
             menu.classList.toggle('active');
             hamburger.classList.toggle('active');
-
-            document.body.style.overflow =
-                menu.classList.contains('active') ? 'hidden' : '';
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
         }
 
-        // BOOKING SYSTEM
         const bookingForm = document.getElementById('bookingForm');
         const dateInput = document.getElementById('bookingDate');
         const studioInput = document.getElementById('studioSelect');
@@ -1222,37 +794,22 @@
         let selectedStart = null;
         let loadingAvailability = false;
 
-        function isArmenian() {
-            return document.body.classList.contains('lang-hy');
-        }
-
-        function say(en, hy) {
-            return isArmenian() ? hy : en;
-        }
+        function isArmenian() { return document.body.classList.contains('lang-hy'); }
+        function say(en, hy) { return isArmenian() ? hy : en; }
 
         function yerevanDate() {
-            const parts = new Intl.DateTimeFormat('en-CA', {
-                timeZone: 'Asia/Yerevan',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            }).formatToParts(new Date());
-
+            const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Yerevan', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
             const p = {};
             parts.forEach(x => p[x.type] = x.value);
-
             return `${p.year}-${p.month}-${p.day}`;
         }
 
-        function timeISO(date, time) {
-            return new Date(`${date}T${time}:00+04:00`).toISOString();
-        }
+        function timeISO(date, time) { return new Date(`${date}T${time}:00+04:00`).toISOString(); }
 
         function isFree(start, end) {
             return !bookedIntervals.some(interval => {
                 const a = new Date(interval.start_at).getTime();
                 const b = new Date(interval.end_at).getTime();
-
                 return start < b && end > a;
             });
         }
@@ -1263,9 +820,7 @@
         }
 
         function clearDuration() {
-            durationSelect.innerHTML =
-                `<option value="">${say('Select duration', 'Ընտրեք տևողությունը')}</option>`;
-
+            durationSelect.innerHTML = `<option value="">${say('Select duration', 'Ընտրեք տևողությունը')}</option>`;
             durationSelect.disabled = true;
             summary.textContent = '';
         }
@@ -1273,15 +828,12 @@
         function renderHours() {
             hoursGrid.innerHTML = '';
             clearDuration();
-
             selectedStart = null;
 
             for (let h = 9; h < 23; h++) {
                 const time = `${String(h).padStart(2, '0')}:00`;
-
                 const start = new Date(timeISO(dateInput.value, time));
                 const end = new Date(start.getTime() + 60 * 60 * 1000);
-
                 const available = isFree(start.getTime(), end.getTime());
                 const past = start.getTime() <= Date.now();
 
@@ -1292,31 +844,22 @@
                 if (!available || past) {
                     button.classList.add('busy');
                     button.disabled = true;
-                    button.textContent = time + ' · ' +
-                        (past ? say('Past', 'Անցած') : say('Booked', 'Զբաղված'));
+                    button.textContent = time + ' · ' + (past ? say('Past', 'Անցած') : say('Booked', 'Զբաղված'));
                 } else {
                     button.textContent = time + ' · ' + say('Free', 'Ազատ');
-
                     button.addEventListener('click', () => {
                         selectedStart = time;
-
-                        document.querySelectorAll('.hour-slot').forEach(el => {
-                            el.classList.remove('selected');
-                        });
-
+                        document.querySelectorAll('.hour-slot').forEach(el => el.classList.remove('selected'));
                         button.classList.add('selected');
-
                         renderDurations();
                     });
                 }
-
                 hoursGrid.appendChild(button);
             }
         }
 
         function renderDurations() {
             clearDuration();
-
             if (!selectedStart) return;
 
             const start = new Date(timeISO(dateInput.value, selectedStart));
@@ -1324,105 +867,64 @@
 
             for (let hours = 1; hours <= 14; hours++) {
                 const end = new Date(start.getTime() + hours * 3600000);
-
-                if (end.getTime() > new Date(timeISO(dateInput.value, '23:00')).getTime()) {
-                    break;
-                }
-
-                if (!isFree(start.getTime(), end.getTime())) {
-                    break;
-                }
-
+                if (end.getTime() > new Date(timeISO(dateInput.value, '23:00')).getTime()) break;
+                if (!isFree(start.getTime(), end.getTime())) break;
                 options.push(hours);
             }
 
             options.forEach(hours => {
                 const option = document.createElement('option');
                 option.value = hours;
-                option.textContent = say(
-                    `${hours} hour${hours > 1 ? 's' : ''}`,
-                    `${hours} ժամ`
-                );
-
+                option.textContent = say(`${hours} hour${hours > 1 ? 's' : ''}`, `${hours} ժամ`);
                 durationSelect.appendChild(option);
             });
 
             durationSelect.disabled = options.length === 0;
-
             if (options.length === 0) {
-                summary.textContent = say(
-                    'No consecutive available hours.',
-                    'Հաջորդական ազատ ժամեր չկան։'
-                );
+                summary.textContent = say('No consecutive available hours.', 'Հաջորդական ազատ ժամեր չկան։');
             }
         }
 
         function updateSummary() {
             const hours = Number(durationSelect.value);
-
             if (!hours || !selectedStart) {
                 summary.textContent = '';
                 return;
             }
-
             const endHour = Number(selectedStart.slice(0, 2)) + hours;
             const endTime = `${String(endHour).padStart(2, '0')}:00`;
-
-            summary.textContent =
-                say('Start: ', 'Սկիզբ՝ ') + selectedStart +
-                ' | ' + say('End: ', 'Ավարտ՝ ') + endTime +
-                ' | ' + say('Total: ', 'Ընդամենը՝ ') + money(hours);
+            summary.textContent = say('Start: ', 'Սկիզբ՝ ') + selectedStart + ' | ' + say('End: ', 'Ավարտ՝ ') + endTime + ' | ' + say('Total: ', 'Ընդամենը՝ ') + money(hours);
         }
 
         durationSelect.addEventListener('change', updateSummary);
 
-        // LOAD AVAILABILITY
         async function loadAvailability() {
             if (!dateInput.value) return;
-
             loadingAvailability = true;
             selectedStart = null;
             clearDuration();
+            hoursGrid.textContent = say('Loading availability...', 'Բեռնվում են ժամերը...');
 
-            hoursGrid.textContent = say(
-                'Loading availability...',
-                'Բեռնվում են ժամերը...'
-            );
-
-            const { data, error } = await supabaseClient.rpc(
-                'get_studio_availability',
-                {
-                    p_date: dateInput.value,
-                    p_studio: studioInput.value
-                }
-            );
-
+            const { data, error } = await supabaseClient.rpc('get_studio_availability', { p_date: dateInput.value, p_studio: studioInput.value });
             loadingAvailability = false;
 
             if (error) {
-                hoursGrid.textContent = say(
-                    'Could not load availability. Please try again.',
-                    'Չհաջողվեց բեռնել ժամերը։ Փորձեք կրկին։'
-                );
-
+                hoursGrid.textContent = say('Could not load availability. Please try again.', 'Չհաջողվեց բեռնել ժամերը։ Փորձեք կրկին։');
                 console.error(error);
                 return;
             }
-
             bookedIntervals = data || [];
             renderHours();
         }
 
         dateInput.min = yerevanDate();
         dateInput.value = yerevanDate();
-
         dateInput.addEventListener('change', loadAvailability);
         studioInput.addEventListener('change', loadAvailability);
 
         // SUBMIT BOOKING
         bookingForm.addEventListener('submit', async event => {
             event.preventDefault();
-
             if (loadingAvailability) return;
 
             const name = document.getElementById('customerName').value.trim();
@@ -1431,10 +933,8 @@
             const hours = Number(durationSelect.value);
 
             if (!selectedStart || !hours || !name || !phone) {
-                message.textContent = say(
-                    'Please complete all fields and select your hours.',
-                    'Խնդրում ենք լրացնել բոլոր դաշտերը և ընտրել ժամերը։'
-                );
+                message.textContent = say('Please complete all fields and select your hours.', 'Խնդրում ենք լրացնել բոլոր դաշտերը և ընտրել ժամերը։');
+                message.style.color = '#bd7777';
                 return;
             }
 
@@ -1442,11 +942,8 @@
             const end = new Date(start.getTime() + hours * 3600000);
 
             if (!isFree(start.getTime(), end.getTime())) {
-                message.textContent = say(
-                    'These hours are already booked. Choose another time.',
-                    'Այս ժամերն արդեն զբաղված են։ Ընտրեք այլ ժամ։'
-                );
-
+                message.textContent = say('These hours are already booked. Choose another time.', 'Այս ժամերն արդեն զբաղված են։ Ընտրեք այլ ժամ։');
+                message.style.color = '#bd7777';
                 await loadAvailability();
                 return;
             }
@@ -1454,43 +951,57 @@
             submitButton.disabled = true;
             submitButton.textContent = say('Booking...', 'Ամրագրում...');
 
-            const { data, error } = await supabaseClient.rpc(
-                'create_studio_booking',
-                {
-                    p_customer_name: name,
-                    p_phone: phone,
-                    p_studio: studio,
-                    p_start_at: start.toISOString(),
-                    p_hours: hours
-                }
-            );
-
-            submitButton.disabled = false;
-            submitButton.innerHTML = `
-                <span lang="en">Book Now</span>
-                <span lang="hy">Ամրագրել հիմա</span>
-            `;
+            // 1. Պահպանել Supabase-ում
+            const { data, error } = await supabaseClient.rpc('create_studio_booking', {
+                p_customer_name: name,
+                p_phone: phone,
+                p_studio: studio,
+                p_start_at: start.toISOString(),
+                p_hours: hours
+            });
 
             if (error) {
-                message.textContent = say(
-                    'Booking failed: ' + error.message,
-                    'Ամրագրումը չհաջողվեց։ ' + error.message
-                );
-
+                submitButton.disabled = false;
+                submitButton.innerHTML = `<span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>`;
+                message.textContent = say('Booking failed: ' + error.message, 'Ամրագրումը չհաջողվեց։ ' + error.message);
+                message.style.color = '#bd7777';
                 await loadAvailability();
                 return;
             }
 
+            // 2. Ուղարկել Էլ. հասցեի ծանուցում (Background)
+            const emailData = new FormData();
+            emailData.append('_subject', 'New Solens Photostudio Booking');
+            emailData.append('_captcha', 'false');
+            emailData.append('Customer Name', name);
+            emailData.append('Phone', phone);
+            emailData.append('Studio', studio);
+            emailData.append('Date', dateInput.value);
+            emailData.append('Start Time', selectedStart);
+            emailData.append('Duration', hours + ' hours');
+            emailData.append('Total Price', money(hours));
+
+            fetch('https://formsubmit.co/ajax/solensphotostudio@gmail.com', {
+                method: 'POST',
+                body: emailData
+            })
+            .then(response => response.json())
+            .then(emailRes => console.log('Email notification sent:', emailRes))
+            .catch(emailErr => console.error('Email notification failed:', emailErr));
+
+            // 3. Հաջողության հաղորդագրություն և մաքրում
+            submitButton.disabled = false;
+            submitButton.innerHTML = `<span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>`;
+            
             message.textContent = say(
                 'Your booking is confirmed! Booking ID: ' + data.booking_id,
                 'Ձեր ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
             );
+            message.style.color = '#81976a'; // Կանաչ գույն հաջողության համար
 
             bookingForm.reset();
-
             dateInput.value = yerevanDate();
             dateInput.min = yerevanDate();
-
             selectedStart = null;
             await loadAvailability();
         });
