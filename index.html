@@ -1148,47 +1148,355 @@
 
     <!-- JavaScript -->
     <script>
+        const SUPABASE_URL = 'https://llptrrnjmxwipmsylpru.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_AY_VIJYDk2f3MwFW2yxACQ__FTeiht0';
+
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+        // PAGE NAVIGATION
         function navigateTo(pageId) {
             document.querySelectorAll('.page-view').forEach(page => {
                 page.classList.remove('active');
             });
-            const targetPage = document.getElementById('view-' + pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
+
+            const target = document.getElementById('view-' + pageId);
+
+            if (target) {
+                target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'instant' });
             }
+
             history.pushState(null, null, '#' + pageId);
         }
 
         window.addEventListener('popstate', () => {
-            const hash = window.location.hash.replace('#', '') || 'home';
-            navigateTo(hash);
+            const page = location.hash.replace('#', '') || 'home';
+            navigateTo(page);
         });
 
-        const initialPage = window.location.hash.replace('#', '') || 'home';
-        navigateTo(initialPage);
-
+        // LANGUAGE
         function setLang(lang) {
             document.body.className = `lang-${lang}`;
+
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.trim() === lang.toUpperCase()) {
-                    btn.classList.add('active');
-                }
+                btn.classList.toggle(
+                    'active',
+                    btn.textContent.trim() === lang.toUpperCase()
+                );
             });
+
             localStorage.setItem('solensPreferredLang', lang);
         }
 
-        const savedLang = localStorage.getItem('solensPreferredLang') || 'en';
-        setLang(savedLang);
+        setLang(localStorage.getItem('solensPreferredLang') || 'en');
 
+        const initialPage = location.hash.replace('#', '') || 'home';
+        navigateTo(initialPage);
+
+        // MOBILE MENU
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             const hamburger = document.getElementById('hamburgerBtn');
+
             menu.classList.toggle('active');
             hamburger.classList.toggle('active');
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+
+            document.body.style.overflow =
+                menu.classList.contains('active') ? 'hidden' : '';
         }
+
+        // BOOKING SYSTEM
+        const bookingForm = document.getElementById('bookingForm');
+        const dateInput = document.getElementById('bookingDate');
+        const studioInput = document.getElementById('studioSelect');
+        const hoursGrid = document.getElementById('hoursGrid');
+        const durationSelect = document.getElementById('durationSelect');
+        const summary = document.getElementById('bookingSummary');
+        const message = document.getElementById('bookingMessage');
+        const submitButton = document.getElementById('bookingSubmit');
+
+        let bookedIntervals = [];
+        let selectedStart = null;
+        let loadingAvailability = false;
+
+        function isArmenian() {
+            return document.body.classList.contains('lang-hy');
+        }
+
+        function say(en, hy) {
+            return isArmenian() ? hy : en;
+        }
+
+        function yerevanDate() {
+            const parts = new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'Asia/Yerevan',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            }).formatToParts(new Date());
+
+            const p = {};
+            parts.forEach(x => p[x.type] = x.value);
+
+            return `${p.year}-${p.month}-${p.day}`;
+        }
+
+        function timeISO(date, time) {
+            return new Date(`${date}T${time}:00+04:00`).toISOString();
+        }
+
+        function isFree(start, end) {
+            return !bookedIntervals.some(interval => {
+                const a = new Date(interval.start_at).getTime();
+                const b = new Date(interval.end_at).getTime();
+
+                return start < b && end > a;
+            });
+        }
+
+        function money(hours) {
+            const price = studioInput.value === 'MUSA' ? 12000 : 10000;
+            return (price * hours).toLocaleString('en-US') + ' AMD';
+        }
+
+        function clearDuration() {
+            durationSelect.innerHTML =
+                `<option value="">${say('Select duration', 'Ընտրեք տևողությունը')}</option>`;
+
+            durationSelect.disabled = true;
+            summary.textContent = '';
+        }
+
+        function renderHours() {
+            hoursGrid.innerHTML = '';
+            clearDuration();
+
+            selectedStart = null;
+
+            for (let h = 9; h < 23; h++) {
+                const time = `${String(h).padStart(2, '0')}:00`;
+
+                const start = new Date(timeISO(dateInput.value, time));
+                const end = new Date(start.getTime() + 60 * 60 * 1000);
+
+                const available = isFree(start.getTime(), end.getTime());
+                const past = start.getTime() <= Date.now();
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'hour-slot';
+
+                if (!available || past) {
+                    button.classList.add('busy');
+                    button.disabled = true;
+                    button.textContent = time + ' · ' +
+                        (past ? say('Past', 'Անցած') : say('Booked', 'Զբաղված'));
+                } else {
+                    button.textContent = time + ' · ' + say('Free', 'Ազատ');
+
+                    button.addEventListener('click', () => {
+                        selectedStart = time;
+
+                        document.querySelectorAll('.hour-slot').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+
+                        button.classList.add('selected');
+
+                        renderDurations();
+                    });
+                }
+
+                hoursGrid.appendChild(button);
+            }
+        }
+
+        function renderDurations() {
+            clearDuration();
+
+            if (!selectedStart) return;
+
+            const start = new Date(timeISO(dateInput.value, selectedStart));
+            const options = [];
+
+            for (let hours = 1; hours <= 14; hours++) {
+                const end = new Date(start.getTime() + hours * 3600000);
+
+                if (end.getTime() > new Date(timeISO(dateInput.value, '23:00')).getTime()) {
+                    break;
+                }
+
+                if (!isFree(start.getTime(), end.getTime())) {
+                    break;
+                }
+
+                options.push(hours);
+            }
+
+            options.forEach(hours => {
+                const option = document.createElement('option');
+                option.value = hours;
+                option.textContent = say(
+                    `${hours} hour${hours > 1 ? 's' : ''}`,
+                    `${hours} ժամ`
+                );
+
+                durationSelect.appendChild(option);
+            });
+
+            durationSelect.disabled = options.length === 0;
+
+            if (options.length === 0) {
+                summary.textContent = say(
+                    'No consecutive available hours.',
+                    'Հաջորդական ազատ ժամեր չկան։'
+                );
+            }
+        }
+
+        function updateSummary() {
+            const hours = Number(durationSelect.value);
+
+            if (!hours || !selectedStart) {
+                summary.textContent = '';
+                return;
+            }
+
+            const endHour = Number(selectedStart.slice(0, 2)) + hours;
+            const endTime = `${String(endHour).padStart(2, '0')}:00`;
+
+            summary.textContent =
+                say('Start: ', 'Սկիզբ՝ ') + selectedStart +
+                ' | ' + say('End: ', 'Ավարտ՝ ') + endTime +
+                ' | ' + say('Total: ', 'Ընդամենը՝ ') + money(hours);
+        }
+
+        durationSelect.addEventListener('change', updateSummary);
+
+        // LOAD AVAILABILITY
+        async function loadAvailability() {
+            if (!dateInput.value) return;
+
+            loadingAvailability = true;
+            selectedStart = null;
+            clearDuration();
+
+            hoursGrid.textContent = say(
+                'Loading availability...',
+                'Բեռնվում են ժամերը...'
+            );
+
+            const { data, error } = await supabaseClient.rpc(
+                'get_studio_availability',
+                {
+                    p_date: dateInput.value,
+                    p_studio: studioInput.value
+                }
+            );
+
+            loadingAvailability = false;
+
+            if (error) {
+                hoursGrid.textContent = say(
+                    'Could not load availability. Please try again.',
+                    'Չհաջողվեց բեռնել ժամերը։ Փորձեք կրկին։'
+                );
+
+                console.error(error);
+                return;
+            }
+
+            bookedIntervals = data || [];
+            renderHours();
+        }
+
+        dateInput.min = yerevanDate();
+        dateInput.value = yerevanDate();
+
+        dateInput.addEventListener('change', loadAvailability);
+        studioInput.addEventListener('change', loadAvailability);
+
+        // SUBMIT BOOKING
+        bookingForm.addEventListener('submit', async event => {
+            event.preventDefault();
+
+            if (loadingAvailability) return;
+
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const studio = studioInput.value;
+            const hours = Number(durationSelect.value);
+
+            if (!selectedStart || !hours || !name || !phone) {
+                message.textContent = say(
+                    'Please complete all fields and select your hours.',
+                    'Խնդրում ենք լրացնել բոլոր դաշտերը և ընտրել ժամերը։'
+                );
+                return;
+            }
+
+            const start = new Date(timeISO(dateInput.value, selectedStart));
+            const end = new Date(start.getTime() + hours * 3600000);
+
+            if (!isFree(start.getTime(), end.getTime())) {
+                message.textContent = say(
+                    'These hours are already booked. Choose another time.',
+                    'Այս ժամերն արդեն զբաղված են։ Ընտրեք այլ ժամ։'
+                );
+
+                await loadAvailability();
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = say('Booking...', 'Ամրագրում...');
+
+            const { data, error } = await supabaseClient.rpc(
+                'create_studio_booking',
+                {
+                    p_customer_name: name,
+                    p_phone: phone,
+                    p_studio: studio,
+                    p_start_at: start.toISOString(),
+                    p_hours: hours
+                }
+            );
+
+            submitButton.disabled = false;
+            submitButton.innerHTML = `
+                <span lang="en">Book Now</span>
+                <span lang="hy">Ամրագրել հիմա</span>
+            `;
+
+            if (error) {
+                message.textContent = say(
+                    'Booking failed: ' + error.message,
+                    'Ամրագրումը չհաջողվեց։ ' + error.message
+                );
+
+                await loadAvailability();
+                return;
+            }
+
+            message.textContent = say(
+                'Your booking is confirmed! Booking ID: ' + data.booking_id,
+                'Ձեր ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
+            );
+
+            bookingForm.reset();
+
+            dateInput.value = yerevanDate();
+            dateInput.min = yerevanDate();
+
+            selectedStart = null;
+            await loadAvailability();
+        });
+
+        // INITIAL LOAD
+        loadAvailability();
     </script>
 </body>
 </html>
