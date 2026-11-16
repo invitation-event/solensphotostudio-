@@ -58,8 +58,20 @@
         .heading-solens { font-size: clamp(3.5rem, 9vw, 6rem); letter-spacing: 0.12em; line-height: 1.1; }
         .heading-photostudio { font-size: clamp(0.75rem, 1.5vw, 0.95rem); letter-spacing: 0.25em; margin-top: 0.5rem; }
 
+        /* Logo Lockup - Stacked exactly like the hero section */
+        .logo-lockup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            line-height: 1;
+            gap: 2px;
+            transition: var(--transition);
+        }
         .logo-main { font-size: 2rem; letter-spacing: 0.2em; }
-        .logo-sub { font-size: 0.6rem; letter-spacing: 0.35em; }
+        .logo-sub { font-size: 0.6rem; letter-spacing: 0.35em; margin-top: 2px; }
+        
         .footer-logo-main { font-size: 2.2rem; letter-spacing: 0.2em; }
         .footer-logo-sub { font-size: 0.6rem; letter-spacing: 0.35em; }
         .logo-lockup:hover .logo-main, .logo-lockup:hover .logo-sub { opacity: 0.7; }
@@ -428,6 +440,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* HEADER: No borders, no lines, completely clean */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: var(--header-height);
@@ -437,7 +450,9 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: none !important; /* Ամբողջությամբ ջնջված է ներքևի գիծը */
+            border: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
         }
         
         .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
