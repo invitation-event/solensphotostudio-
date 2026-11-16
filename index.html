@@ -276,13 +276,13 @@
             will-change: transform;
         }
         .carousel-slide {
-            flex: 0 0 12.5%; /* Կրկնակի փոքրացված (նախկին 25%-ի փոխարեն) */
-            padding: 0 0.75rem;
+            flex: 0 0 12.5%;
+            padding: 0 0.5rem;
             box-sizing: border-box;
         }
         .equipment-card {
             background: #f5ebe0;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             cursor: zoom-in;
             transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
@@ -296,20 +296,20 @@
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
-            border-radius: 16px 16px 0 0;
+            border-radius: 12px 12px 0 0;
             display: block;
         }
         .equipment-name {
             display: block;
             text-align: center;
             font-family: var(--font-sans);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-heading);
-            padding: 1.2rem 1rem;
+            padding: 0.8rem 0.5rem;
             letter-spacing: 0.02em;
             background: #f5ebe0;
-            border-radius: 0 0 16px 16px;
+            border-radius: 0 0 12px 12px;
         }
         .carousel-btn {
             position: absolute;
@@ -477,8 +477,7 @@
 
         .mobile-menu-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100dvh;
-            background: rgba(245, 235, 224, 0.98);
-            backdrop-filter: blur(20px);
+            background: rgba(245, 235, 224, 0.98); backdrop-filter: blur(20px);
             z-index: 1001; display: flex; flex-direction: column;
             justify-content: center; align-items: center; gap: 2.5rem;
             opacity: 0; pointer-events: none; transition: var(--transition);
@@ -602,7 +601,7 @@
             .logo-sub { font-size: 0.55rem; letter-spacing: 0.25em; }
             h2 { font-size: 1.8rem; letter-spacing: 0.05em; }
             
-            .carousel-slide { flex: 0 0 25%; } /* Պլանշետների համար 4 հատ */
+            .carousel-slide { flex: 0 0 25%; }
             .carousel-container { padding: 0 2rem; }
             
             .contact-wrapper { flex-direction: column; gap: 2rem; }
@@ -610,7 +609,7 @@
         }
 
         @media (max-width: 600px) {
-            .carousel-slide { flex: 0 0 50%; } /* Բջջայինի համար 2 հատ */
+            .carousel-slide { flex: 0 0 50%; }
             .carousel-container { padding: 0 1rem; }
             .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; background: rgba(245, 235, 224, 0.8); }
             .prev-btn { left: 0.5rem; }
@@ -1062,7 +1061,7 @@
         const SUPABASE_KEY = 'sb_publishable_AY_VIJYDk2f3MwFW2yxACQ__FTeiht0';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // --- EQUIPMENT DATA (Վերադասավորված հերթականությամբ) ---
+        // --- EQUIPMENT DATA (Reordered) ---
         const equipmentData = [
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/bd9fab3c-af88-4518-8ba5-e98f43336974.jpg?v=1794837158", name: "Godox QT 600iii (3x)" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Amaran_150C.jpg?v=1794836970", name: "Amaran 150C" },
@@ -1111,7 +1110,7 @@
                 function getSlidesPerView() {
                     if (window.innerWidth <= 600) return 2;
                     if (window.innerWidth <= 900) return 4;
-                    return 8; /* 12.5% * 8 = 100% */
+                    return 8;
                 }
 
                 function updateCarousel() {
