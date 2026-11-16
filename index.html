@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Solens Photo Studio - Where Art Meets the Lens. Premium photography space in Yerevan.">
-    <meta name="theme-color" content="#f5ebe0"> 
+    <meta name="theme-color" content="#ffffff"> 
     <title>SOLENS PHOTOSTUDIO</title>
     
     <!-- Premium Typography: Cormorant Garamond (Serif) & Inter (Sans-Serif) -->
@@ -15,9 +15,9 @@
     <style>
         /* --- TYPOGRAPHY & VARIABLES --- */
         :root {
-            --bg: #f5ebe0;
-            --bg-cream: #f5ebe0;
-            --bg-book: #f5ebe0;
+            --bg: #ffffff;
+            --bg-cream: #ffffff;
+            --bg-book: #ffffff;
             --text: #171717;
             --text-heading: #080808;
             --text-muted: #555555;
@@ -206,7 +206,8 @@
             text-align: left;
             margin-top: 1rem;
             padding: 1rem;
-            background: #f5ebe0;
+            background: #ffffff;
+            border: 1px solid var(--divider);
             border-left: 3px solid var(--accent);
             color: var(--text-muted);
         }
@@ -281,12 +282,12 @@
             box-sizing: border-box;
         }
         .equipment-card {
-            background: #f5ebe0;
+            background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
             cursor: zoom-in;
             transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid var(--divider);
         }
         .equipment-card:hover {
             transform: translateY(-8px);
@@ -308,14 +309,14 @@
             color: var(--text-heading);
             padding: 0.8rem 0.5rem;
             letter-spacing: 0.02em;
-            background: #f5ebe0;
+            background: #ffffff;
             border-radius: 0 0 12px 12px;
         }
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(245, 235, 224, 0.9);
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid var(--divider);
             width: 48px;
             height: 48px;
@@ -440,7 +441,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HEADER: No borders, no lines, completely clean */
+        /* HEADER: Kept in original beige color */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: var(--header-height);
@@ -477,7 +478,8 @@
 
         .mobile-menu-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100dvh;
-            background: rgba(245, 235, 224, 0.98); backdrop-filter: blur(20px);
+            background: rgba(245, 235, 224, 0.98);
+            backdrop-filter: blur(20px);
             z-index: 1001; display: flex; flex-direction: column;
             justify-content: center; align-items: center; gap: 2.5rem;
             opacity: 0; pointer-events: none; transition: var(--transition);
@@ -489,7 +491,7 @@
         .hero {
             min-height: 100dvh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative; background-color: var(--bg);
-            background-image: linear-gradient(rgba(245, 235, 224, 0.5), rgba(245, 235, 224, 0.2)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
             background-size: cover; background-position: center; padding-top: 0;
         }
         .hero-content { position: relative; z-index: 1; padding: 2rem; }
@@ -528,6 +530,7 @@
         .btn-accent { border-color: var(--text); }
         .btn-accent:hover { background: var(--accent); border-color: var(--accent); color: var(--text); }
 
+        /* FOOTER: Kept in original beige color */
         footer { background-color: #f5ebe0; color: var(--text-muted); padding: 5rem 0 3rem; text-align: center; border-top: 1px solid var(--divider); }
         .footer-logo-lockup { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 2.5rem; text-decoration: none; }
         .footer-menu { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
@@ -611,7 +614,7 @@
         @media (max-width: 600px) {
             .carousel-slide { flex: 0 0 50%; }
             .carousel-container { padding: 0 1rem; }
-            .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; background: rgba(245, 235, 224, 0.8); }
+            .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; background: rgba(255, 255, 255, 0.9); }
             .prev-btn { left: 0.5rem; }
             .next-btn { right: 0.5rem; }
             
@@ -1294,7 +1297,8 @@
             clearDuration();
             selectedStart = null;
 
-            for (let h = 9; h < 23; h++) {
+            // Added 23:00 by changing h < 23 to h <= 23
+            for (let h = 9; h <= 23; h++) {
                 const time = `${String(h).padStart(2, '0')}:00`;
                 const start = new Date(timeISO(dateInput.value, time));
                 const end = new Date(start.getTime() + 60 * 60 * 1000);
@@ -1308,7 +1312,8 @@
                 if (!available || past) {
                     button.classList.add('busy');
                     button.disabled = true;
-                    button.textContent = time + ' · ' + (past ? say('Past', 'Անցած') : say('Booked', 'Զբաղված'));
+                    // Changed 'Past'/'Անցած' to 'Booked'/'Զբաղված'
+                    button.textContent = time + ' · ' + say('Booked', 'Զբաղված');
                 } else {
                     button.textContent = time + ' · ' + say('Free', 'Ազատ');
                     button.addEventListener('click', () => {
@@ -1331,7 +1336,8 @@
 
             for (let hours = 1; hours <= 14; hours++) {
                 const end = new Date(start.getTime() + hours * 3600000);
-                if (end.getTime() > new Date(timeISO(dateInput.value, '23:00')).getTime()) break;
+                // Updated end time check to '24:00' to allow 23:00 bookings
+                if (end.getTime() > new Date(timeISO(dateInput.value, '24:00')).getTime()) break;
                 if (!isFree(start.getTime(), end.getTime())) break;
                 options.push(hours);
             }
