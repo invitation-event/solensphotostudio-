@@ -58,11 +58,26 @@
         .heading-solens { font-size: clamp(3.5rem, 9vw, 6rem); letter-spacing: 0.12em; line-height: 1.1; }
         .heading-photostudio { font-size: clamp(0.75rem, 1.5vw, 0.95rem); letter-spacing: 0.25em; margin-top: 0.5rem; }
 
-        .logo-main { font-size: 2rem; letter-spacing: 0.2em; }
+        .logo-main { font-size: 2rem; letter-spacing: 0.2em; display: flex; align-items: center; justify-content: center; }
         .logo-sub { font-size: 0.6rem; letter-spacing: 0.35em; }
-        .footer-logo-main { font-size: 2.2rem; letter-spacing: 0.2em; }
+        .footer-logo-main { font-size: 2.2rem; letter-spacing: 0.2em; display: flex; align-items: center; justify-content: center; }
         .footer-logo-sub { font-size: 0.6rem; letter-spacing: 0.35em; }
         .logo-lockup:hover .logo-main, .logo-lockup:hover .logo-sub { opacity: 0.7; }
+
+        /* Custom Lens "O" Symbol */
+        .lens-o {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 0.85em;
+            height: 0.85em;
+            margin: 0 0.05em;
+            vertical-align: middle;
+        }
+        .lens-o svg {
+            width: 100%;
+            height: 100%;
+        }
 
         .tagline {
             font-family: var(--font-serif);
@@ -437,7 +452,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: none; /* Removed the line as requested */
         }
         
         .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
@@ -518,8 +533,46 @@
         .footer-menu { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
         .footer-link { text-decoration: none; transition: var(--transition); padding: 0.5rem; }
         .footer-link:hover { color: var(--text); }
-        .contact-info { margin-bottom: 3.5rem; line-height: 2; }
-        .contact-info strong { color: var(--text-heading); font-weight: 600; letter-spacing: 0.15em; font-size: 0.8rem; display: block; margin-bottom: 0.5rem; text-transform: uppercase; }
+        
+        /* Footer Contact & Map Layout */
+        .contact-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+        .contact-text {
+            line-height: 2;
+            text-align: right;
+        }
+        .contact-text strong {
+            color: var(--text-heading);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .footer-map {
+            width: 280px;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--divider);
+            filter: grayscale(100%) contrast(1.1);
+            transition: var(--transition);
+        }
+        .footer-map:hover {
+            filter: grayscale(0%);
+        }
+        .footer-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (min-width: 768px) {
@@ -550,6 +603,9 @@
             
             .carousel-slide { flex: 0 0 50%; }
             .carousel-container { padding: 0 2rem; }
+            
+            .contact-wrapper { flex-direction: column; gap: 2rem; }
+            .contact-text { text-align: center; }
         }
 
         @media (max-width: 600px) {
@@ -564,6 +620,7 @@
             .mobile-nav-link { font-size: 1.1rem; }
             .about-img { height: 300px; }
             .hours-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-map { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
@@ -571,7 +628,7 @@
 
     <header id="header">
         <a href="#" onclick="navigateTo('home'); return false;" class="logo-lockup">
-            <span class="logo-main">SOLENS</span>
+            <span class="logo-main">S<span class="lens-o"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="42" stroke="#171717" stroke-width="7"/><circle cx="50" cy="50" r="18" fill="#171717"/></svg></span>LENS</span>
             <span class="logo-sub">PHOTOSTUDIO</span>
         </a>
         <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -610,7 +667,7 @@
             <section class="hero">
                 <div class="hero-content">
                     <h1 class="main-heading">
-                        <span class="heading-solens"><span lang="en">SOLENS</span><span lang="hy">SOLENS</span></span>
+                        <span class="heading-solens"><span lang="en">S<span class="lens-o"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="42" stroke="#171717" stroke-width="7"/><circle cx="50" cy="50" r="18" fill="#171717"/></svg></span>LENS</span><span lang="hy">S<span class="lens-o"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="42" stroke="#171717" stroke-width="7"/><circle cx="50" cy="50" r="18" fill="#171717"/></svg></span>LENS</span></span>
                         <span class="heading-photostudio"><span lang="en">PHOTOSTUDIO</span><span lang="hy">PHOTOSTUDIO</span></span>
                     </h1>
                     <p class="tagline"><span lang="en"></span><span lang="hy"></span></p>
@@ -844,7 +901,7 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-logo-lockup">
-                <span class="footer-logo-main">SOLENS</span>
+                <span class="footer-logo-main">S<span class="lens-o"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="42" stroke="#171717" stroke-width="7"/><circle cx="50" cy="50" r="18" fill="#171717"/></svg></span>LENS</span>
                 <span class="footer-logo-sub">PHOTOSTUDIO</span>
             </div>
             <div class="footer-menu">
@@ -855,10 +912,21 @@
                 <a href="#" onclick="navigateTo('equipment'); return false;" class="footer-link"><span lang="en">Equipment</span><span lang="hy">Տեխնիկա</span></a>
                 <a href="#" onclick="navigateTo('booking'); return false;" class="footer-link"><span lang="en">Book</span><span lang="hy">Ամրագրել</span></a>
             </div>
-            <div class="contact-info">
-                <p><strong><span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span></strong><span lang="en">Arshakunyats 254, Yerevan</span><span lang="hy">Արշակունյաց 254, Երևան</span></p>
-                <p style="margin-top: 1.5rem;"><strong><span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span></strong>+374 93 320695<br>solensphotostudio@gmail.com</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-text">
+                    <p><strong><span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span></strong>
+                    <span lang="en">Yerevan, Arshakunyats 254 | 3rd floor</span>
+                    <span lang="hy">Երևան, Արշակունյաց 254 | 3-րդ հարկ</span></p>
+                    <p style="margin-top: 1.5rem;"><strong><span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span></strong>
+                    +374 93 320695<br>
+                    solensphotostudio@gmail.com</p>
+                </div>
+                <div class="footer-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.876714398488!2d44.4895!3d40.1855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abc6c0c0c0c0c%3A0x0!2z0JrRgNCw0YHQvdCw0Y8g0YHQtdGA0LrQuNC90LAsIDI1NCwg0YHQvNC40LrQsA!5e0!3m2!1sen!2sam!4v1700000000000!5m2!1sen!2sam" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
+
             <div class="copyright">&copy; 2026 SOLENS PHOTOSTUDIO. <span lang="en">ALL RIGHTS RESERVED.</span><span lang="hy">ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ:</span></div>
         </div>
     </footer>
