@@ -634,6 +634,35 @@
             .hours-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-map { width: 100%; max-width: 320px; }
         }
+
+        .cancel-booking {
+            max-width: 600px;
+            margin: 6rem auto 2rem;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--divider);
+            text-align: center;
+        }
+
+        .cancel-booking h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cancel-booking p {
+            font-size: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .cancel-booking .btn {
+            width: 100%;
+            border-color: #bd7777;
+            color: #a05b5b;
+        }
+
+        .cancel-booking .btn:hover {
+            background: #bd7777;
+            color: white;
+        }
     </style>
 </head>
 <body class="lang-en">
@@ -1021,6 +1050,43 @@
                         </button>
                         <p id="bookingMessage" role="status" style="text-align:center; margin-top:15px;"></p>
                     </form>
+
+                    <!-- BOOKING CANCELLATION -->
+                    <div class="cancel-booking">
+                        <h3>Cancel Your Booking</h3>
+                        <p>
+                            If you need to cancel your reservation,
+                            please enter your booking details below.
+                        </p>
+
+                        <form id="cancelBookingForm" class="booking-form">
+                            <div class="form-group">
+                                <label>Booking ID</label>
+                                <input
+                                    type="text"
+                                    id="cancelBookingId"
+                                    placeholder="Enter your Booking ID"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="cancelPhone"
+                                    placeholder="+374"
+                                    required
+                                >
+                            </div>
+
+                            <button type="submit" class="btn">
+                                Cancel Booking
+                            </button>
+
+                            <p id="cancelMessage" role="status"></p>
+                        </form>
+                    </div>
                 </div>
             </section>
         </div>
