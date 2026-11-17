@@ -98,6 +98,12 @@
             color: var(--text-heading);
         }
 
+        /* Smaller heading specifically for Equipment section */
+        .small-heading {
+            font-size: clamp(1rem, 2vw, 1.25rem) !important;
+            margin-bottom: 1rem;
+        }
+
         h3 { 
             font-family: var(--font-sans);
             font-size: 1.1rem; 
@@ -250,10 +256,12 @@
             font-family: var(--font-sans);
             font-size: 0.8rem;
             color: var(--text-muted);
-            padding-top: 2.5rem;
+            padding: 1.5rem 1rem;
             border-top: 1px solid var(--divider);
             letter-spacing: 0.1em;
             font-weight: 400;
+            background-color: #ffffff; /* Changed to white background */
+            margin-top: 2rem;
         }
 
         /* --- CAROUSEL STYLES --- */
@@ -545,7 +553,7 @@
             justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
-            margin-bottom: 3.5rem;
+            margin-bottom: 0;
         }
         .contact-text {
             line-height: 2;
@@ -791,7 +799,7 @@
             <section class="content-section">
                 <div class="container">
                     <h4><span lang="en">Our Equipment</span><span lang="hy">Մեր Տեխնիկան</span></h4>
-                    <h2><span lang="en">Lighting Equipment and Accessories</span><span lang="hy">Լուսային տեխնիկա և սարքավորումներ</span></h2>
+                    <h2 class="small-heading"><span lang="en">Lighting Equipment and Accessories</span><span lang="hy">Լուսային տեխնիկա և սարքավորումներ</span></h2>
                     <div class="divider"></div>
                     
                     <div class="carousel-container">
@@ -948,7 +956,7 @@
             <section class="content-section">
                 <div class="container">
                     <h4><span lang="en">Our Equipment</span><span lang="hy">Մեր Տեխնիկան</span></h4>
-                    <h2><span lang="en">Lighting Equipment and Accessories</span><span lang="hy">Լուսային տեխնիկա և սարքավորումներ</span></h2>
+                    <h2 class="small-heading"><span lang="en">Lighting Equipment and Accessories</span><span lang="hy">Լուսային տեխնիկա և սարքավորումներ</span></h2>
                     <div class="divider"></div>
                     
                     <div class="carousel-container">
