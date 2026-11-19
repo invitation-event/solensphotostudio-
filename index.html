@@ -1497,16 +1497,12 @@
             submitButton.disabled = false;
             submitButton.innerHTML = `<span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>`;
 
+            // Updated success message as requested, with #ccd5ae color
             message.textContent = say(
-                emailSent
-                    ? 'Your booking is confirmed! Booking ID: ' + data.booking_id
-                    : 'Your booking is confirmed, but email notification failed. Booking ID: ' + data.booking_id,
-                emailSent
-                    ? 'Ձեր ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
-                    : 'Ամրագրումը հաստատված է, բայց նամակը չուղարկվեց։ Ամրագրման համար՝ ' + data.booking_id
+                'Your booking is confirmed! Booking ID: ' + data.booking_id,
+                'Ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
             );
-
-            message.style.color = emailSent ? '#81976a' : '#bd7777';
+            message.style.color = '#ccd5ae';
 
             bookingForm.reset();
             dateInput.value = yerevanDate();
