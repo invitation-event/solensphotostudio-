@@ -1513,6 +1513,7 @@
             }
 
             const emailData = new FormData();
+
             emailData.append('_subject', 'New Solens Photostudio Booking');
             emailData.append('_captcha', 'false');
             emailData.append('Customer Name', name);
@@ -1523,27 +1524,52 @@
             emailData.append('Duration', hours + ' hours');
             emailData.append('Total Price', money(hours));
 
-            fetch('https://formsubmit.co/ajax/solensphotostudio@gmail.com', {
-                method: 'POST',
-                body: emailData
-            })
-            .then(response => response.json())
-            .then(emailRes => console.log('Email notification sent:', emailRes))
-            .catch(emailErr => console.error('Email notification failed:', emailErr));
+            let emailSent = false;
+
+            try {
+                const response = await fetch(
+                    'https://formsubmit.co/ajax/solensphotostudio@gmail.com',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: emailData
+                    }
+                );
+
+                const result = await response.json();
+
+                emailSent = response.ok &&
+                    (result.success === 'true' || result.success === true);
+
+                if (!emailSent) {
+                    console.error('Email sending failed:', result);
+                }
+
+            } catch (error) {
+                console.error('Email notification error:', error);
+            }
 
             submitButton.disabled = false;
             submitButton.innerHTML = `<span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>`;
-            
+
             message.textContent = say(
-                'Your booking is confirmed! Booking ID: ' + data.booking_id,
-                'Ձեր ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
+                emailSent
+                    ? 'Your booking is confirmed! Booking ID: ' + data.booking_id
+                    : 'Your booking is confirmed, but email notification failed. Booking ID: ' + data.booking_id,
+                emailSent
+                    ? 'Ձեր ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
+                    : 'Ամրագրումը հաստատված է, բայց նամակը չուղարկվեց։ Ամրագրման համար՝ ' + data.booking_id
             );
-            message.style.color = '#81976a';
+
+            message.style.color = emailSent ? '#81976a' : '#bd7777';
 
             bookingForm.reset();
             dateInput.value = yerevanDate();
             dateInput.min = yerevanDate();
             selectedStart = null;
+
             await loadAvailability();
         });
 
