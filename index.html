@@ -1488,12 +1488,13 @@
             submitButton.disabled = false;
             submitButton.innerHTML = `<span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>`;
 
-            // Always show confirmed message in #ccd5ae color
             message.textContent = say(
                 'Your booking is confirmed! Booking ID: ' + data.booking_id,
                 'Ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
             );
-            message.style.color = '#ccd5ae';
+
+            message.style.color = '#596b46';
+            message.style.fontWeight = '600';
 
             bookingForm.reset();
             dateInput.value = yerevanDate();
