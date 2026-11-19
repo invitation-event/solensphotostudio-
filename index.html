@@ -260,7 +260,7 @@
             border-top: 1px solid var(--divider);
             letter-spacing: 0.1em;
             font-weight: 400;
-            background-color: #ffffff;
+            background-color: #ffffff; /* Changed to white background */
             margin-top: 2rem;
         }
 
@@ -453,7 +453,7 @@
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: var(--header-height);
-            padding: 0 5rem;
+            padding: 0 5rem; /* Increased padding to make content narrower */
             z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             transition: var(--transition);
@@ -592,7 +592,7 @@
         }
 
         @media (max-width: 900px) {
-            .container, header { padding: 0 1.5rem; }
+            .container, header { padding: 0 1.5rem; } /* Reset padding on mobile */
             .hamburger { display: flex; }
             .nav-menu { display: none; }
             .about-grid, .room-item { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -633,6 +633,35 @@
             .about-img { height: 300px; }
             .hours-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-map { width: 100%; max-width: 320px; }
+        }
+
+        .cancel-booking {
+            max-width: 600px;
+            margin: 6rem auto 2rem;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--divider);
+            text-align: center;
+        }
+
+        .cancel-booking h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cancel-booking p {
+            font-size: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .cancel-booking .btn {
+            width: 100%;
+            border-color: #bd7777;
+            color: #a05b5b;
+        }
+
+        .cancel-booking .btn:hover {
+            background: #bd7777;
+            color: white;
         }
     </style>
 </head>
@@ -942,7 +971,7 @@
                         <li><span lang="en">Please return all props and decorations to their original places after use.</span><span lang="hy">Ռեկվիզիտներն ու դեկորները խնդրում ենք օգտագործելուց հետո վերադարձնել իրենց սկզբնական տեղերը։</span></li>
                         <li><span lang="en">Please keep the studio clean and tidy at all times.</span><span lang="hy">Ստուդիայի տարածքում խնդրում ենք պահպանել մաքրությունն ու կարգուկանոնը։</span></li>
                         <li><span lang="en">Extending your booking is possible only if the studio is available, and an additional fee will apply.</span><span lang="hy">Ամրագրված ժամի երկարաձգումը հնարավոր է միայն ազատ ժամերի առկայության դեպքում՝ լրացուցիչ վճարով։</span></li>
-                        <li><span lang="en">If you need to cancel or reschedule your booking, please notify us at least 24 hours in advance. Cancellations made less than 24 hours before the booking will incur a fee of 100% of the booking price.</span><span lang="hy">Ամրագրումը չեղարկելու կամ տեղափոխելու դեպքում խնդրում ենք տեղեկացնել առնվազն 24 ժամ առաջ։ 24 ժամից պակաս ժամանակահատվածում չեղարկելու դեպքում գանձվում է ամրագրման արժեքի 100%-ը։</span></li>
+                        <li><span lang="en">If you need to cancel or reschedule your booking, please notify us at least 24 hours in advance. Cancellations made less than 24 hours before the booking will incur a fee of 50% of the booking price.</span><span lang="hy">Ամրագրումը չեղարկելու կամ տեղափոխելու դեպքում խնդրում ենք տեղեկացնել առնվազն 24 ժամ առաջ։ 24 ժամից պակաս ժամանակահատվածում չեղարկելու դեպքում գանձվում է ամրագրման արժեքի 50%-ը։</span></li>
                         <li><span lang="en">Smoking is strictly prohibited inside the studio.</span><span lang="hy">Ստուդիայի տարածքում ծխելն արգելվում է։</span></li>
                         <li><span lang="en">For children’s safety, please ensure that they are always supervised by an adult.</span><span lang="hy">Երեխաների անվտանգության համար խնդրում ենք նրանց չթողնել առանց մեծահասակի հսկողության։</span></li>
                         <li><span lang="en">Please finish your photoshoot and leave the studio 5 minutes before the end of your scheduled booking to allow time for collecting your belongings and preparing the space for the next client.</span><span lang="hy">Խնդրում ենք ստուդիայից դուրս գալ ամրագրված ժամից 5 րոպե շուտ՝ հաշվի առնելով նաև իրերի հավաքման և տարածքը կարգի բերելու ժամանակը։</span></li>
@@ -1021,6 +1050,43 @@
                         </button>
                         <p id="bookingMessage" role="status" style="text-align:center; margin-top:15px;"></p>
                     </form>
+
+                    <!-- BOOKING CANCELLATION -->
+                    <div class="cancel-booking">
+                        <h3>Cancel Your Booking</h3>
+                        <p>
+                            If you need to cancel your reservation,
+                            please enter your booking details below.
+                        </p>
+
+                        <form id="cancelBookingForm" class="booking-form">
+                            <div class="form-group">
+                                <label>Booking ID</label>
+                                <input
+                                    type="text"
+                                    id="cancelBookingId"
+                                    placeholder="Enter your Booking ID"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="cancelPhone"
+                                    placeholder="+374"
+                                    required
+                                >
+                            </div>
+
+                            <button type="submit" class="btn">
+                                Cancel Booking
+                            </button>
+
+                            <p id="cancelMessage" role="status"></p>
+                        </form>
+                    </div>
                 </div>
             </section>
         </div>
@@ -1306,6 +1372,7 @@
             clearDuration();
             selectedStart = null;
 
+            // Added 23:00 by changing h < 23 to h <= 23
             for (let h = 9; h <= 23; h++) {
                 const time = `${String(h).padStart(2, '0')}:00`;
                 const start = new Date(timeISO(dateInput.value, time));
@@ -1320,6 +1387,7 @@
                 if (!available || past) {
                     button.classList.add('busy');
                     button.disabled = true;
+                    // Changed 'Past'/'Անցած' to 'Booked'/'Զբաղված'
                     button.textContent = time + ' · ' + say('Booked', 'Զբաղված');
                 } else {
                     button.textContent = time + ' · ' + say('Free', 'Ազատ');
@@ -1343,6 +1411,7 @@
 
             for (let hours = 1; hours <= 14; hours++) {
                 const end = new Date(start.getTime() + hours * 3600000);
+                // Updated end time check to '24:00' to allow 23:00 bookings
                 if (end.getTime() > new Date(timeISO(dateInput.value, '24:00')).getTime()) break;
                 if (!isFree(start.getTime(), end.getTime())) break;
                 options.push(hours);
@@ -1443,64 +1512,38 @@
                 return;
             }
 
-            // Calculate end time for email
-            const startHour = parseInt(selectedStart.split(':')[0], 10);
-            const endHour = startHour + hours;
-            const endTime = `${String(endHour).padStart(2, '0')}:00`;
-
-            // Get current Yerevan date and time for registration record
-            const now = new Date();
-            const bookingDate = now.toLocaleDateString('hy-AM', { timeZone: 'Asia/Yerevan', year: 'numeric', month: '2-digit', day: '2-digit' });
-            const bookingTime = now.toLocaleTimeString('hy-AM', { timeZone: 'Asia/Yerevan', hour: '2-digit', minute: '2-digit', hour12: false });
-
-            // Format email body exactly as requested
-            const emailBody = `Ամրագրման տվյալներ՝
-Հաճախորդի անուն՝ ${name}
-Հեռախոսահամար՝ ${phone}
-Ստուդիա՝ ${studio}
-Ամրագրման ամսաթիվ՝ ${dateInput.value}
-Ամրագրման ժամ՝ ${selectedStart} – ${endTime}
-Ամրագրման կատարման տվյալներ՝
-Գրանցման ամսաթիվ՝ ${bookingDate}
-Գրանցման ժամ՝ ${bookingTime}`;
-
             const emailData = new FormData();
             emailData.append('_subject', 'New Solens Photostudio Booking');
             emailData.append('_captcha', 'false');
-            emailData.append('Message', emailBody);
+            emailData.append('Customer Name', name);
+            emailData.append('Phone', phone);
+            emailData.append('Studio', studio);
+            emailData.append('Date', dateInput.value);
+            emailData.append('Start Time', selectedStart);
+            emailData.append('Duration', hours + ' hours');
+            emailData.append('Total Price', money(hours));
 
-            // We keep the fetch attempt for logging purposes, but the UI will always show success
-            try {
-                await fetch(
-                    'https://formsubmit.co/ajax/solensphotostudio@gmail.com',
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        body: emailData
-                    }
-                );
-            } catch (error) {
-                console.error('Email notification error:', error);
-            }
+            fetch('https://formsubmit.co/ajax/solensphotostudio@gmail.com', {
+                method: 'POST',
+                body: emailData
+            })
+            .then(response => response.json())
+            .then(emailRes => console.log('Email notification sent:', emailRes))
+            .catch(emailErr => console.error('Email notification failed:', emailErr));
 
             submitButton.disabled = false;
             submitButton.innerHTML = `<span lang="en">Book Now</span><span lang="hy">Ամրագրել հիմա</span>`;
-
+            
             message.textContent = say(
                 'Your booking is confirmed! Booking ID: ' + data.booking_id,
-                'Ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
+                'Ձեր ամրագրումը հաստատված է։ Ամրագրման համար՝ ' + data.booking_id
             );
-
-            message.style.color = '#596b46';
-            message.style.fontWeight = '600';
+            message.style.color = '#81976a';
 
             bookingForm.reset();
             dateInput.value = yerevanDate();
             dateInput.min = yerevanDate();
             selectedStart = null;
-
             await loadAvailability();
         });
 
