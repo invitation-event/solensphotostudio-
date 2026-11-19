@@ -98,6 +98,12 @@
             color: var(--text-heading);
         }
 
+        /* Smaller heading specifically for Equipment section */
+        .small-heading {
+            font-size: clamp(1rem, 2vw, 1.25rem) !important;
+            margin-bottom: 1rem;
+        }
+
         h3 { 
             font-family: var(--font-sans);
             font-size: 1.1rem; 
@@ -250,10 +256,12 @@
             font-family: var(--font-sans);
             font-size: 0.8rem;
             color: var(--text-muted);
-            padding-top: 2.5rem;
+            padding: 1.5rem 1rem;
             border-top: 1px solid var(--divider);
             letter-spacing: 0.1em;
             font-weight: 400;
+            background-color: #ffffff; /* Changed to white background */
+            margin-top: 2rem;
         }
 
         /* --- CAROUSEL STYLES --- */
@@ -441,11 +449,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HEADER: Kept in original beige color */
+        /* HEADER: Narrower width via increased padding */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: var(--header-height);
-            padding: 0 3rem; z-index: 1000;
+            padding: 0 5rem; /* Increased padding to make content narrower */
+            z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             transition: var(--transition);
             background: rgba(245, 235, 224, 0.95);
@@ -544,7 +553,7 @@
             justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
-            margin-bottom: 3.5rem;
+            margin-bottom: 0;
         }
         .contact-text {
             line-height: 2;
@@ -583,7 +592,7 @@
         }
 
         @media (max-width: 900px) {
-            .container, header { padding: 0 1.5rem; }
+            .container, header { padding: 0 1.5rem; } /* Reset padding on mobile */
             .hamburger { display: flex; }
             .nav-menu { display: none; }
             .about-grid, .room-item { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -688,7 +697,7 @@
                             <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/c663464f90e4e9dcc05e97569d5a2edc.jpg?v=1790422831" alt="Solens Studio Interior" class="about-img" loading="lazy" decoding="async">
                         </div>
                         <div class="about-text">
-                            <h3 style="text-align: left; margin-bottom: 1.5rem;"><span lang="en">Our Story & Vision</span><span lang="hy">Մեր Պատմությունը և Տեսլականը</span></h3>
+                            <h3 style="text-align: left; margin-bottom: 1.5rem;"><span lang="en">Our Story</span><span lang="hy">Մեր Պատմությունը</span></h3>
                             <p>
                                 <span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography.</span>
                                 <span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ Մեր տեսլականն է դառնալ ստեղծագործական միջավայր, որտեղ լուսանկարչությունը վերածվում է արվեստի, իսկ յուրաքանչյուր գաղափար՝ յուրահատուկ պատմության։</span>
@@ -789,8 +798,8 @@
             <!-- EQUIPMENT CAROUSEL ON HOME PAGE -->
             <section class="content-section">
                 <div class="container">
-                    <h4><span lang="en">Our Gear</span><span lang="hy">Մեր Տեխնիկան</span></h4>
-                    <h2><span lang="en">Professional Equipment</span><span lang="hy">Պրոֆեսիոնալ Տեխնիկա</span></h2>
+                    <h4><span lang="en">Our Equipment</span><span lang="hy">Մեր Տեխնիկան</span></h4>
+                    <h2 class="small-heading"><span lang="en">Lighting Equipment and Accessories</span><span lang="hy">Լուսային տեխնիկա և սարքավորումներ</span></h2>
                     <div class="divider"></div>
                     
                     <div class="carousel-container">
@@ -817,7 +826,7 @@
                             <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/c663464f90e4e9dcc05e97569d5a2edc.jpg?v=1790422831" alt="Solens Studio Interior" class="about-img" loading="lazy" decoding="async">
                         </div>
                         <div class="about-text">
-                            <h3 style="text-align: left; margin-bottom: 1.5rem;"><span lang="en">Our Story & Vision</span><span lang="hy">Մեր Պատմությունը և Տեսլականը</span></h3>
+                            <h3 style="text-align: left; margin-bottom: 1.5rem;"><span lang="en">Our Story</span><span lang="hy">Մեր Պատմությունը</span></h3>
                             <p>
                                 <span lang="en">Solens Photostudio was founded in 2024 with the vision of creating an inspiring creative environment and opening up new possibilities in the world of photography.</span>
                                 <span lang="hy">Solens Photostudio-ն հիմնադրվել է 2024 թվականին՝ ստեղծագործական միջավայր ստեղծելու և լուսանկարչության աշխարհում նոր հնարավորություններ բացելու գաղափարով։ Մեր տեսլականն է դառնալ ստեղծագործական միջավայր, որտեղ լուսանկարչությունը վերածվում է արվեստի, իսկ յուրաքանչյուր գաղափար՝ յուրահատուկ պատմության։</span>
@@ -946,8 +955,8 @@
         <div id="view-equipment" class="page-view">
             <section class="content-section">
                 <div class="container">
-                    <h4><span lang="en">Our Gear</span><span lang="hy">Մեր Տեխնիկան</span></h4>
-                    <h2><span lang="en">Professional Equipment</span><span lang="hy">Պրոֆեսիոնալ Տեխնիկա</span></h2>
+                    <h4><span lang="en">Our Equipment</span><span lang="hy">Մեր Տեխնիկան</span></h4>
+                    <h2 class="small-heading"><span lang="en">Lighting Equipment and Accessories</span><span lang="hy">Լուսային տեխնիկա և սարքավորումներ</span></h2>
                     <div class="divider"></div>
                     
                     <div class="carousel-container">
@@ -1064,17 +1073,17 @@
         const SUPABASE_KEY = 'sb_publishable_AY_VIJYDk2f3MwFW2yxACQ__FTeiht0';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // --- EQUIPMENT DATA (Reordered) ---
+        // --- EQUIPMENT DATA (Reordered & Images Updated) ---
         const equipmentData = [
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/bd9fab3c-af88-4518-8ba5-e98f43336974.jpg?v=1794837158", name: "Godox QT 600iii (3x)" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Amaran_150C.jpg?v=1794836970", name: "Amaran 150C" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Godox_Litemons_LA_300R.jpg?v=1794836994", name: "Godox Litemons LA 300R" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/GVM_SD_300d.jpg?v=1794836970", name: "GVM SD 300d" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/dda89d93-3e31-42b0-809d-7ed3eca96007.jpg?v=1794837382", name: "Umbrella 165" },
-            { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/239cae33-a8b1-431a-b96d-f8dfeb07e7ea.jpg?v=1794837383", name: "China ball 50 and 85" },
+            { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/fa9e935b-f5bd-406d-a3bc-35fc0cce40c3.jpg?v=1794909527", name: "China ball 50 and 85" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Octobox_140.jpg?v=1794837382", name: "Octobox 140" },
-            { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Softbox_6090.png?v=1794837386", name: "Softbox 60/90" },
-            { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/30x120_Strip_box.jpg?v=1794837382", name: "30x120 Strip box" },
+            { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Softbox_6090.png?v=1794837386", name: "Softbox 60x90" },
+            { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/9eba5711-8f59-4be3-b426-9b5186d8a47c.jpg?v=1794909527", name: "30x120 Strip box" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/875a334d-59e9-47dc-8e63-c1a919c6d403.jpg?v=1794837384", name: "Beauty dish 65" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/fce857ef-11ef-4a71-8d52-c399892ea78d.jpg?v=1794837383", name: "GOBO Godox" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/14bae9a9-949f-484a-832c-8fec72107380.jpg?v=1794837386", name: "Snow machine" },
