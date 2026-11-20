@@ -175,6 +175,13 @@
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-bottom-color: var(--text); }
 
+        /* Darker text for Date Input */
+        .form-group input[type="date"] {
+            color: var(--text-heading) !important;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
         .form-group select {
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23171717%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
             background-repeat: no-repeat;
@@ -260,8 +267,63 @@
             border-top: 1px solid var(--divider);
             letter-spacing: 0.1em;
             font-weight: 400;
-            background-color: #ffffff; /* Changed to white background */
+            background-color: #ffffff;
             margin-top: 2rem;
+        }
+
+        /* --- STUDIO SELECTION CARDS --- */
+        .studio-selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .studio-card {
+            position: relative;
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            padding: 1.5rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .studio-card:hover {
+            border-color: var(--text);
+            transform: translateY(-2px);
+        }
+        .studio-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .studio-card:has(input[type="radio"]:checked) {
+            border-color: var(--text);
+            background-color: #fafafa;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .studio-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .studio-name {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .studio-price {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-heading);
         }
 
         /* --- CAROUSEL STYLES --- */
@@ -453,7 +515,7 @@
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: var(--header-height);
-            padding: 0 5rem; /* Increased padding to make content narrower */
+            padding: 0 5rem;
             z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             transition: var(--transition);
@@ -592,7 +654,7 @@
         }
 
         @media (max-width: 900px) {
-            .container, header { padding: 0 1.5rem; } /* Reset padding on mobile */
+            .container, header { padding: 0 1.5rem; }
             .hamburger { display: flex; }
             .nav-menu { display: none; }
             .about-grid, .room-item { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -633,6 +695,7 @@
             .about-img { height: 300px; }
             .hours-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-map { width: 100%; max-width: 320px; }
+            .studio-selection-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -988,13 +1051,28 @@
                             <label><span lang="en">Phone Number</span><span lang="hy">Հեռախոսահամար</span></label>
                             <input id="customerPhone" type="tel" placeholder="+374 " required autocomplete="tel">
                         </div>
+                        
+                        <!-- UPDATED: Studio Selection as Visible Cards -->
                         <div class="form-group">
                             <label><span lang="en">Choose Studio</span><span lang="hy">Ընտրեք սրահը</span></label>
-                            <select id="studioSelect" required>
-                                <option value="MUSA">MUSA — 12,000 AMD / hour</option>
-                                <option value="MINI MUSA">MINI MUSA — 10,000 AMD / hour</option>
-                            </select>
+                            <div class="studio-selection-grid">
+                                <label class="studio-card">
+                                    <input type="radio" name="studio" value="MUSA" required checked>
+                                    <div class="studio-card-content">
+                                        <span class="studio-name">MUSA</span>
+                                        <span class="studio-price"><span lang="en">12,000 AMD / hour</span><span lang="hy">12.000 դրամ / ժամ</span></span>
+                                    </div>
+                                </label>
+                                <label class="studio-card">
+                                    <input type="radio" name="studio" value="MINI MUSA" required>
+                                    <div class="studio-card-content">
+                                        <span class="studio-name">MINI MUSA</span>
+                                        <span class="studio-price"><span lang="en">10,000 AMD / hour</span><span lang="hy">10.000 դրամ / ժամ</span></span>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label><span lang="en">Choose Date</span><span lang="hy">Ընտրեք ամսաթիվը</span></label>
                             <input type="date" id="bookingDate" required>
@@ -1073,7 +1151,7 @@
         const SUPABASE_KEY = 'sb_publishable_AY_VIJYDk2f3MwFW2yxACQ__FTeiht0';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // --- EQUIPMENT DATA (Reordered & Images Updated) ---
+        // --- EQUIPMENT DATA ---
         const equipmentData = [
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/bd9fab3c-af88-4518-8ba5-e98f43336974.jpg?v=1794837158", name: "Godox QT 600iii (3x)" },
             { src: "https://cdn.shopify.com/s/files/1/0840/3871/3600/files/Amaran_150C.jpg?v=1794836970", name: "Amaran 150C" },
@@ -1239,10 +1317,17 @@
 
         function setLang(lang) {
             document.body.className = `lang-${lang}`;
+            document.documentElement.lang = lang === 'hy' ? 'hy-AM' : 'en-US'; // Updates global locale for date pickers
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
             localStorage.setItem('solensPreferredLang', lang);
+            
+            // Force date input locale to match selected language
+            const dateInput = document.getElementById('bookingDate');
+            if (dateInput) {
+                dateInput.lang = lang === 'hy' ? 'hy-AM' : 'en-US';
+            }
         }
 
         setLang(localStorage.getItem('solensPreferredLang') || 'en');
@@ -1259,7 +1344,6 @@
 
         const bookingForm = document.getElementById('bookingForm');
         const dateInput = document.getElementById('bookingDate');
-        const studioInput = document.getElementById('studioSelect');
         const hoursGrid = document.getElementById('hoursGrid');
         const durationSelect = document.getElementById('durationSelect');
         const summary = document.getElementById('bookingSummary');
@@ -1272,6 +1356,12 @@
 
         function isArmenian() { return document.body.classList.contains('lang-hy'); }
         function say(en, hy) { return isArmenian() ? hy : en; }
+        
+        // Helper to get selected studio from radio buttons
+        function getSelectedStudio() {
+            const checked = document.querySelector('input[name="studio"]:checked');
+            return checked ? checked.value : 'MUSA';
+        }
 
         function yerevanDate() {
             const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Yerevan', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
@@ -1291,7 +1381,7 @@
         }
 
         function money(hours) {
-            const price = studioInput.value === 'MUSA' ? 12000 : 10000;
+            const price = getSelectedStudio() === 'MUSA' ? 12000 : 10000;
             return (price * hours).toLocaleString('en-US') + ' AMD';
         }
 
@@ -1306,7 +1396,6 @@
             clearDuration();
             selectedStart = null;
 
-            // Added 23:00 by changing h < 23 to h <= 23
             for (let h = 9; h <= 23; h++) {
                 const time = `${String(h).padStart(2, '0')}:00`;
                 const start = new Date(timeISO(dateInput.value, time));
@@ -1321,7 +1410,6 @@
                 if (!available || past) {
                     button.classList.add('busy');
                     button.disabled = true;
-                    // Changed 'Past'/'Անցած' to 'Booked'/'Զբաղված'
                     button.textContent = time + ' · ' + say('Booked', 'Զբաղված');
                 } else {
                     button.textContent = time + ' · ' + say('Free', 'Ազատ');
@@ -1345,7 +1433,6 @@
 
             for (let hours = 1; hours <= 14; hours++) {
                 const end = new Date(start.getTime() + hours * 3600000);
-                // Updated end time check to '24:00' to allow 23:00 bookings
                 if (end.getTime() > new Date(timeISO(dateInput.value, '24:00')).getTime()) break;
                 if (!isFree(start.getTime(), end.getTime())) break;
                 options.push(hours);
@@ -1384,7 +1471,8 @@
             clearDuration();
             hoursGrid.textContent = say('Loading availability...', 'Բեռնվում են ժամերը...');
 
-            const { data, error } = await supabaseClient.rpc('get_studio_availability', { p_date: dateInput.value, p_studio: studioInput.value });
+            const studio = getSelectedStudio();
+            const { data, error } = await supabaseClient.rpc('get_studio_availability', { p_date: dateInput.value, p_studio: studio });
             loadingAvailability = false;
 
             if (error) {
@@ -1399,7 +1487,11 @@
         dateInput.min = yerevanDate();
         dateInput.value = yerevanDate();
         dateInput.addEventListener('change', loadAvailability);
-        studioInput.addEventListener('change', loadAvailability);
+        
+        // Listen to studio radio button changes
+        document.querySelectorAll('input[name="studio"]').forEach(radio => {
+            radio.addEventListener('change', loadAvailability);
+        });
 
         bookingForm.addEventListener('submit', async event => {
             event.preventDefault();
@@ -1407,7 +1499,7 @@
 
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
-            const studio = studioInput.value;
+            const studio = getSelectedStudio();
             const hours = Number(durationSelect.value);
 
             if (!selectedStart || !hours || !name || !phone) {
